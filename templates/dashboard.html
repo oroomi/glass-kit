@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tidewell · Overview (sample)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../glass.css">
+<script src="../glass.js" defer></script>
+<style>
+  /* page-only layout; everything else comes from glass.css */
+  .head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 24px; }
+  .head .g-h1 { font-size: clamp(30px, 3.2vw, 46px); max-width: 18ch; }
+  .stage-in { padding: 24px 24px 18px; display: flex; flex-direction: column; gap: 14px; height: 100%; }
+  .stage-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+  .stage .g-chart { margin-top: auto; }
+  .stage { min-height: 392px; }
+  .tip { position: absolute; right: 8%; top: 0; z-index: 3; }
+  .tip b { font-size: 15px; letter-spacing: -0.02em; }
+  @media (max-width: 860px) { .head { flex-direction: column; align-items: flex-start; } }
+  @media (max-width: 640px) { .stage { min-height: 0; } .stage-in { padding: 18px 16px 16px; } .tip { display: none; } }
+</style>
+</head>
+<body class="g">
+
+<nav class="g-nav" aria-label="Main">
+  <a class="g-nav__brand" href="landing.html"><span class="g-nav__mark"><svg class="g-i g-i--sm"><use href="../icons.svg#radar"/></svg></span>Tidewell</a>
+  <span class="g-sample" title="Every name and number on this page is sample data">Sample</span>
+  <div class="g-nav__links">
+    <a href="dashboard.html" aria-current="page">Overview</a>
+    <a href="#signals">Signals</a>
+    <a href="detail.html">Entities</a>
+    <a href="#sources">Sources</a>
+  </div>
+  <div class="g-nav__actions">
+    <button class="g-btn g-btn--ghost g-hide-phone" data-g-open="#ask-sheet"><svg class="g-i g-i--sm"><use href="../icons.svg#search"/></svg>Ask anything <span class="g-kbd">/</span></button>
+    <button class="g-btn g-btn--ghost g-btn--icon" data-g-theme aria-label="Toggle light or dark"><svg class="g-i g-i--sm"><use href="../icons.svg#moon"/></svg></button>
+    <span class="g-avatar" aria-label="Signed in as sample user">SU</span>
+  </div>
+</nav>
+
+<main class="g-main g-container">
+  <header class="head">
+    <div class="g-stack" style="--g-gap:10px">
+      <span class="g-eyebrow">Sunday 18 October · week 42</span>
+      <h1 class="g-h1"><span class="g-hl">6 signals</span> need action this week</h1>
+      <p class="g-lede" style="font-size:16px">Two close inside 7 days. Every number links to its source.</p>
+      <p class="g-small g-mono g-faint">Data as of Sun 18 Oct 09:40 · 5 of 6 sources live · rule v3</p>
+    </div>
+    <div class="g-row">
+      <div class="g-seg g-hide-phone" role="tablist" aria-label="Period">
+        <button role="tab" aria-selected="false">Month</button><button role="tab" aria-selected="true">Week</button><button role="tab" aria-selected="false">Today</button>
+      </div>
+      <button class="g-btn g-btn--primary" data-g-open="#review-sheet">Start review<svg class="g-i g-i--sm"><use href="../icons.svg#arrow-right"/></svg></button>
+    </div>
+  </header>
+
+  <div class="g-shell">
+    <div class="g-stack" style="--g-gap:16px; min-width:0">
+      <section class="g-bento">
+        <!-- hero visual: number + chart + one glass overlay -->
+        <article class="g-stage g-stage--dark stage g-span-7" aria-label="Act now this week">
+          <div class="stage-in">
+            <div class="stage-top">
+              <div class="g-kpi g-kpi--hero">
+                <span class="g-kpi__label"><span class="g-tile g-tile--sm"><svg class="g-i"><use href="../icons.svg#zap"/></svg></span>Act now</span>
+                <span class="g-kpi__value">6<small>of 31 signals</small></span>
+                <span class="g-kpi__meta"><span class="g-delta g-delta--up">2 vs last week</span>· weeks 31 to 42</span>
+              </div>
+              <div class="g-legend g-hide-phone" style="padding-top:6px">
+                <span style="--_c: var(--g-chart-1)">Act now</span><span style="--_c: color-mix(in oklab, var(--g-chart-5) 55%, transparent)">All signals</span>
+              </div>
+            </div>
+            <div class="g-chart" style="--odd:hidden">
+<div class="g-float g-glass--thick tip g-refract" role="note">
+            <div class="g-eyebrow" style="color:var(--g-glass-text-2)">Week 42</div>
+            <div><b class="g-num">31</b> <span class="g-small" style="color:var(--g-glass-text-2)">signals</span> · <b class="g-num g-accent-text">6</b> <span class="g-small" style="color:var(--g-glass-text-2)">act now</span></div>
+          </div>
+<svg viewBox="0 0 640 330" role="img" aria-label="Weekly signals, weeks 31 to 42: total rising from 14 to 31, act-now from 2 to 6"><g class="grid"><line x1="8" x2="632" y1="326.0" y2="326.0"/><line x1="8" x2="632" y1="230.2" y2="230.2"/><line x1="8" x2="632" y1="134.5" y2="134.5"/><line x1="8" x2="632" y1="38.7" y2="38.7"/></g><g><rect class="muted" x="19.4" y="191.9" width="29.1" height="134.1" rx="7"/><rect class="s1 bar lo" x="19.4" y="306.8" width="29.1" height="19.2" rx="7"/><rect class="muted" x="71.4" y="153.6" width="29.1" height="172.4" rx="7"/><rect class="s1 bar lo" x="71.4" y="297.3" width="29.1" height="28.7" rx="7"/><rect class="muted" x="123.4" y="172.8" width="29.1" height="153.2" rx="7"/><rect class="s1 bar lo" x="123.4" y="306.8" width="29.1" height="19.2" rx="7"/><rect class="muted" x="175.4" y="124.9" width="29.1" height="201.1" rx="7"/><rect class="s1 bar lo" x="175.4" y="287.7" width="29.1" height="38.3" rx="7"/><rect class="muted" x="227.4" y="144.1" width="29.1" height="181.9" rx="7"/><rect class="s1 bar lo" x="227.4" y="297.3" width="29.1" height="28.7" rx="7"/><rect class="muted" x="279.4" y="96.2" width="29.1" height="229.8" rx="7"/><rect class="s1 bar lo" x="279.4" y="287.7" width="29.1" height="38.3" rx="7"/><rect class="muted" x="331.4" y="115.3" width="29.1" height="210.7" rx="7"/><rect class="s1 bar lo" x="331.4" y="297.3" width="29.1" height="28.7" rx="7"/><rect class="muted" x="383.4" y="67.5" width="29.1" height="258.5" rx="7"/><rect class="s1 bar lo" x="383.4" y="278.1" width="29.1" height="47.9" rx="7"/><rect class="muted" x="435.4" y="86.6" width="29.1" height="239.4" rx="7"/><rect class="s1 bar lo" x="435.4" y="287.7" width="29.1" height="38.3" rx="7"/><rect class="muted" x="487.4" y="48.3" width="29.1" height="277.7" rx="7"/><rect class="s1 bar lo" x="487.4" y="278.1" width="29.1" height="47.9" rx="7"/><rect class="muted" x="539.4" y="77.0" width="29.1" height="249.0" rx="7"/><rect class="s1 bar lo" x="539.4" y="287.7" width="29.1" height="38.3" rx="7"/><rect class="muted hi" x="591.4" y="29.2" width="29.1" height="296.8" rx="7"/><rect class="s1 bar hi" x="591.4" y="268.5" width="29.1" height="57.5" rx="7"/></g></svg><div class="g-chart__x" aria-hidden="true"><span>W31</span><span>W32</span><span>W33</span><span>W34</span><span>W35</span><span>W36</span><span>W37</span><span>W38</span><span>W39</span><span>W40</span><span>W41</span><span>W42</span></div></div>
+          </div>
+          </article>
+
+        <!-- act-now list -->
+        <article class="g-card g-span-5" aria-labelledby="act-h">
+          <div class="g-card__head">
+            <div><h2 class="g-card__title" id="act-h">Act now</h2><p class="g-card__sub">Sorted by deadline</p></div>
+            <a class="g-btn g-btn--sm" href="#signals">View all<svg class="g-i g-i--sm"><use href="../icons.svg#chevron-right"/></svg></a>
+          </div>
+          <ul class="g-list">
+            <li><a class="g-list__item" href="detail.html"><span class="g-date g-date--urgent"><b>21</b><span>Oct</span></span>
+              <span class="g-list__body"><span class="g-list__title">Coastal sensing pilot: tender closes</span><span class="g-list__meta">Ondine Labs · public tenders</span></span>
+              <span class="g-list__end"><span class="g-chip g-chip--warn">3 days</span></span></a></li>
+            <li><a class="g-list__item" href="detail.html"><span class="g-date g-date--urgent"><b>24</b><span>Oct</span></span>
+              <span class="g-list__body"><span class="g-list__title">Innovation voucher, round 2</span><span class="g-list__meta">Brinewell · funding calls</span></span>
+              <span class="g-list__end"><span class="g-chip g-chip--warn">6 days</span></span></a></li>
+            <li><a class="g-list__item" href="detail.html"><span class="g-date"><b>29</b><span>Oct</span></span>
+              <span class="g-list__body"><span class="g-list__title">Port electrification request for info</span><span class="g-list__meta">Tessera Marine · procurement</span></span>
+              <span class="g-list__end"><span class="g-chip">11 days</span></span></a></li>
+            <li><a class="g-list__item" href="detail.html"><span class="g-date"><b>02</b><span>Nov</span></span>
+              <span class="g-list__body"><span class="g-list__title">Joint R&amp;D call opens</span><span class="g-list__meta">Quayside Robotics · funding calls</span></span>
+              <span class="g-list__end"><span class="g-chip">15 days</span></span></a></li>
+            <li><a class="g-list__item" href="detail.html"><span class="g-date"><b>06</b><span>Nov</span></span>
+              <span class="g-list__body"><span class="g-list__title">Accelerator intake, spring cohort</span><span class="g-list__meta">Eddyline Data · programmes</span></span>
+              <span class="g-list__end"><span class="g-chip">19 days</span></span></a></li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="g-kpi-strip" aria-label="This week in numbers">
+        <div class="g-kpi"><span class="g-kpi__label">Signals this week</span><span class="g-kpi__value">31</span><span class="g-kpi__meta"><span class="g-delta g-delta--up">19%</span> vs 4-week avg</span></div>
+        <div class="g-kpi"><span class="g-kpi__label">Entities tracked</span><span class="g-kpi__value">1,284</span><span class="g-kpi__meta">+42 new</span></div>
+        <div class="g-kpi"><span class="g-kpi__label">Evidence score</span><span class="g-kpi__value">0.71<small>avg</small></span><span class="g-kpi__meta">rule: sources × recency</span></div>
+        <div class="g-kpi"><span class="g-kpi__label">Sources live</span><span class="g-kpi__value">5<span class="g-dim">/6</span></span><span class="g-kpi__meta"><span class="g-chip g-chip--warn g-chip--plain" style="height:20px">1 delayed</span></span></div>
+      </section>
+
+      <section id="signals" class="g-stack" style="--g-gap:12px">
+        <div class="g-row g-row--between">
+          <h2 class="g-h2">Latest signals</h2>
+          <div class="g-tabs" role="tablist"><button role="tab" aria-selected="true">All <span class="g-count">31</span></button><button role="tab" aria-selected="false">Act now <span class="g-count">6</span></button><button role="tab" aria-selected="false">Watch <span class="g-count">11</span></button><button role="tab" aria-selected="false">New entities <span class="g-count">4</span></button></div>
+        </div>
+        <div class="g-table-wrap">
+          <table class="g-table g-table--stack">
+            <thead><tr><th>Entity</th><th>Signal</th><th>Evidence</th><th>Source</th><th class="is-num">Seen</th></tr></thead>
+            <tbody>
+              <tr class="is-group"><td colspan="5">Act now · high fit and solid evidence</td></tr>
+              <tr><td class="is-title is-strong" data-label="Entity">Ondine Labs</td><td data-label="Signal">Tender matches product line</td><td data-label="Evidence"><span class="g-bar" style="--v:86"><i></i>0.86</span></td><td data-label="Source"><a class="g-source" href="#"><svg class="g-i"><use href="../icons.svg#link"/></svg>tenders · #4471</a></td><td class="is-num" data-label="Seen">2 h ago</td></tr>
+              <tr><td class="is-title is-strong" data-label="Entity">Brinewell</td><td data-label="Signal">Eligible for voucher round</td><td data-label="Evidence"><span class="g-bar" style="--v:74"><i></i>0.74</span></td><td data-label="Source"><a class="g-source" href="#"><svg class="g-i"><use href="../icons.svg#link"/></svg>calls · v2-118</a></td><td class="is-num" data-label="Seen">5 h ago</td></tr>
+              <tr><td class="is-title is-strong" data-label="Entity">Tessera Marine</td><td data-label="Signal">RFI names their category</td><td data-label="Evidence"><span class="g-bar" style="--v:69"><i></i>0.69</span></td><td data-label="Source"><a class="g-source" href="#"><svg class="g-i"><use href="../icons.svg#link"/></svg>procurement · 209</a></td><td class="is-num" data-label="Seen">Yesterday</td></tr>
+              <tr class="is-group"><td colspan="5">Watch · promising, evidence still thin</td></tr>
+              <tr><td class="is-title is-strong" data-label="Entity">Lumen Kelp</td><td data-label="Signal">New site registered</td><td data-label="Evidence"><span class="g-bar" style="--v:41;--_c:var(--g-chart-5)"><i></i>0.41</span></td><td data-label="Source"><a class="g-source" href="#"><svg class="g-i"><use href="../icons.svg#link"/></svg>registry · 77-0193</a></td><td class="is-num" data-label="Seen">2 days</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+
+    <aside class="g-shell__side" aria-label="Assistant and sources">
+      <section class="g-card">
+        <div class="g-card__head" style="margin-bottom:14px">
+          <div><h2 class="g-card__title">Ask Tidewell</h2><p class="g-card__sub">Answers cite the record they came from</p></div>
+          <span class="g-tile"><svg class="g-i"><use href="../icons.svg#sparkles"/></svg></span>
+        </div>
+        <label class="g-ask g-ask--sm"><svg class="g-i g-i--sm"><use href="../icons.svg#search"/></svg><input placeholder="Which deadlines close first?" aria-label="Ask a question"><button class="g-ask__mic" type="button" aria-label="Speak"><svg class="g-i g-i--sm"><use href="../icons.svg#mic"/></svg></button></label>
+        <div class="g-suggest g-mt-4"><button>What changed since Friday?</button><button>Why is Ondine first?</button><button>Show thin evidence</button></div>
+      </section>
+      <section class="g-card" id="sources">
+        <div class="g-card__head" style="margin-bottom:10px"><div><h2 class="g-card__title">Sources</h2><p class="g-card__sub">Checked every hour</p></div><span class="g-chip g-chip--good">5 live</span></div>
+        <ul class="g-list">
+          <li class="g-list__item"><span class="g-tile g-tile--sm"><svg class="g-i"><use href="../icons.svg#file"/></svg></span><span class="g-list__body"><span class="g-list__title">Public tenders</span><span class="g-list__meta">updated 12 min ago</span></span><span class="g-chip g-chip--good g-chip--plain">ok</span></li>
+          <li class="g-list__item"><span class="g-tile g-tile--sm g-tile--teal"><svg class="g-i"><use href="../icons.svg#database"/></svg></span><span class="g-list__body"><span class="g-list__title">Company registry</span><span class="g-list__meta">updated 1 h ago</span></span><span class="g-chip g-chip--good g-chip--plain">ok</span></li>
+          <li class="g-list__item"><span class="g-tile g-tile--sm g-tile--warn"><svg class="g-i"><use href="../icons.svg#calendar"/></svg></span><span class="g-list__body"><span class="g-list__title">Funding calls</span><span class="g-list__meta">last success 9 h ago</span></span><span class="g-chip g-chip--warn g-chip--plain">delayed</span></li>
+        </ul>
+      </section>
+      <p class="g-small g-faint" style="padding:0 6px">Sample data. Names, numbers and sources on this page are invented for the template.</p>
+    </aside>
+  </div>
+</main>
+
+<!-- phone tab bar + separate orb (iOS-style search/assistant button) -->
+<nav class="g-tabbar g-tabbar--with-orb" aria-label="Sections">
+  <a href="dashboard.html" aria-current="page"><svg class="g-i"><use href="../icons.svg#radar"/></svg>Overview</a>
+  <a href="#signals"><svg class="g-i"><use href="../icons.svg#list"/></svg>Signals</a>
+  <a href="detail.html"><svg class="g-i"><use href="../icons.svg#building"/></svg>Entities</a>
+  <a href="#sources"><svg class="g-i"><use href="../icons.svg#database"/></svg>Sources</a>
+</nav>
+<button class="g-orb-btn" id="orb" aria-label="Ask by voice" data-state="idle"><span class="g-orb"></span><svg class="g-i"><use href="../icons.svg#mic"/></svg></button>
+<div class="g-pilot-panel" id="pilot" hidden role="dialog" aria-label="Voice assistant">
+  <div class="g-pilot-status"><span class="g-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span data-pilot-status>Listening</span></div>
+  <p class="g-pilot-transcript">Which deadlines close <span class="is-partial">this week?</span></p>
+  <div class="g-pilot-answer">Two: <b>Ondine Labs</b> tender closes Wed 21 Oct and <b>Brinewell</b> voucher round on Sat 24 Oct.
+    <div class="g-row g-mt-2" style="--g-gap:6px"><a class="g-source" href="#">tenders · #4471</a><a class="g-source" href="#">calls · v2-118</a></div></div>
+</div>
+
+<dialog class="g-sheet g-sheet--side" id="review-sheet" aria-label="Review">
+  <div class="g-sheet__body">
+    <div class="g-row g-row--between"><h2 class="g-h2">Review 6 signals</h2><button class="g-btn g-btn--ghost g-btn--icon" data-g-close aria-label="Close"><svg class="g-i"><use href="../icons.svg#x"/></svg></button></div>
+    <p class="g-muted">One at a time, newest deadline first. Keyboard: J next, K previous, Enter open.</p>
+    <div class="g-empty"><div class="g-empty__icon"><svg class="g-i"><use href="../icons.svg#inbox"/></svg></div><p>The review flow goes here in your app.</p></div>
+  </div>
+</dialog>
+<dialog class="g-sheet" id="ask-sheet" aria-label="Ask">
+  <div class="g-sheet__grab"></div>
+  <div class="g-sheet__body">
+    <label class="g-ask"><svg class="g-i"><use href="../icons.svg#search"/></svg><input placeholder="Ask about any signal" aria-label="Ask"><button class="g-ask__mic" type="button" aria-label="Speak"><svg class="g-i"><use href="../icons.svg#mic"/></svg></button></label>
+    <div class="g-suggest"><button>What changed since Friday?</button><button>Why is Ondine first?</button></div>
+  </div>
+</dialog>
+<script>document.addEventListener("DOMContentLoaded", function () { GlassKit.demoPilot(document.getElementById("orb"), document.getElementById("pilot")); });</script>
+</body>
+</html>

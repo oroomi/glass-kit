@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tidewell · signals worth acting on (sample)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../glass.css">
+<script src="../glass.js" defer></script>
+<style>
+  .hero-wrap { position: relative; isolation: isolate; overflow-x: clip; }
+  /* colour behind the frame so the glass has something to bend */
+  .glow { position: absolute; z-index: -1; left: 50%; top: 470px; width: min(1200px, 100%); height: 520px; transform: translateX(-50%); filter: blur(56px); opacity: .8; pointer-events: none;
+    background: radial-gradient(40% 50% at 30% 50%, color-mix(in oklab, var(--g-accent) 70%, transparent), transparent 70%), radial-gradient(35% 45% at 70% 40%, rgb(20 184 166 / .6), transparent 70%), radial-gradient(30% 40% at 55% 80%, rgb(245 158 11 / .35), transparent 70%); }
+  [data-theme="dark"] .glow { opacity: .55; }
+  .hero-title { max-width: 15ch; }
+  .meta { display: flex; gap: 18px; flex-wrap: wrap; justify-content: center; font-size: 13px; color: var(--g-text-3); }
+  .meta span { display: inline-flex; align-items: center; gap: 6px; }
+  .preview { position: relative; max-width: 1120px; margin: 8px auto 0; }
+  .preview .g-frame { padding: 10px; border-radius: 34px; }
+  .mini { display: grid; grid-template-columns: 1.25fr 1fr; gap: 14px; padding: 18px; background: var(--g-bg); }
+  .mini .g-stage { padding: 20px; }
+  .side-float { position: absolute; z-index: 3; }
+  .sf-left { left: -40px; top: 330px; width: 230px; }
+  .sf-right { right: -40px; top: 40px; width: 300px; }
+  .sf-orb { right: 28px; bottom: -26px; }
+  .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+  .steps .num { font-family: var(--g-font-mono); font-size: 13px; color: var(--g-accent-text); }
+  .cta-band { padding: clamp(32px, 6vw, 72px); text-align: center; display: flex; flex-direction: column; align-items: center; gap: 18px; }
+  @media (max-width: 1100px) { .sf-left, .sf-right { display: none; } }
+  @media (max-width: 760px) { .mini { grid-template-columns: 1fr; padding: 10px; } .mini > :last-child { display: none; } .steps { grid-template-columns: 1fr; gap: 20px; } .glow { top: 600px; } .sf-orb { right: 16px; } }
+</style>
+</head>
+<body class="g">
+
+<nav class="g-nav" aria-label="Main">
+  <a class="g-nav__brand" href="landing.html"><span class="g-nav__mark"><svg class="g-i g-i--sm"><use href="../icons.svg#radar"/></svg></span>Tidewell</a>
+  <div class="g-nav__links">
+    <a href="#how">How it works</a>
+    <a href="#features">Features</a>
+    <a href="#sources">Sources</a>
+  </div>
+  <div class="g-nav__actions">
+    <button class="g-btn g-btn--ghost g-btn--icon" data-g-theme aria-label="Toggle light or dark"><svg class="g-i g-i--sm"><use href="../icons.svg#moon"/></svg></button>
+    <a class="g-btn g-btn--primary g-btn--sm" href="dashboard.html">Open demo</a>
+  </div>
+</nav>
+
+<div class="hero-wrap">
+  <div class="glow" aria-hidden="true"></div>
+  <header class="g-hero g-container">
+    <span class="g-pill-badge"><b>Sample</b>A landing template from the glass kit</span>
+    <h1 class="g-hero-title hero-title">See the <span class="g-hl">6 signals</span> worth acting on this week</h1>
+    <p class="g-lede">Tidewell reads public tenders, registries and funding calls every hour, ranks what fits you, and shows the source behind every claim. Tap, or just ask out loud.</p>
+    <div class="g-hero__cta">
+      <a class="g-btn g-btn--primary g-btn--lg" href="dashboard.html">Open the live demo<svg class="g-i g-i--sm"><use href="../icons.svg#arrow-right"/></svg></a>
+      <a class="g-btn g-btn--glass g-btn--lg" href="dashboard.html"><svg class="g-i g-i--sm"><use href="../icons.svg#mic"/></svg>Ask by voice</a>
+    </div>
+    <div class="meta"><span><svg class="g-i g-i--sm"><use href="../icons.svg#check"/></svg>No sign-up</span><span><svg class="g-i g-i--sm"><use href="../icons.svg#check"/></svg>Works on a phone</span><span><svg class="g-i g-i--sm"><use href="../icons.svg#check"/></svg>Every number cited</span></div>
+  </header>
+
+  <!-- the product, framed in glass, with two floating overlays and the orb -->
+  <div class="g-container">
+    <div class="preview">
+      <div class="g-frame g-glass g-glass--thin">
+        <div class="mini">
+          <div class="g-stage">
+            <div class="g-kpi g-kpi--hero">
+              <span class="g-kpi__label"><span class="g-tile g-tile--sm"><svg class="g-i"><use href="../icons.svg#zap"/></svg></span>Act now</span>
+              <span class="g-kpi__value" style="font-size:clamp(56px,6vw,92px)">6<small>of 31 signals</small></span>
+            </div>
+            <div class="g-chart g-mt-4"><svg viewBox="0 0 640 330" role="img" aria-label="Weekly signals, weeks 31 to 42: total rising from 14 to 31, act-now from 2 to 6"><g class="grid"><line x1="8" x2="632" y1="326.0" y2="326.0"/><line x1="8" x2="632" y1="230.2" y2="230.2"/><line x1="8" x2="632" y1="134.5" y2="134.5"/><line x1="8" x2="632" y1="38.7" y2="38.7"/></g><g><rect class="muted" x="19.4" y="191.9" width="29.1" height="134.1" rx="7"/><rect class="s1 bar lo" x="19.4" y="306.8" width="29.1" height="19.2" rx="7"/><rect class="muted" x="71.4" y="153.6" width="29.1" height="172.4" rx="7"/><rect class="s1 bar lo" x="71.4" y="297.3" width="29.1" height="28.7" rx="7"/><rect class="muted" x="123.4" y="172.8" width="29.1" height="153.2" rx="7"/><rect class="s1 bar lo" x="123.4" y="306.8" width="29.1" height="19.2" rx="7"/><rect class="muted" x="175.4" y="124.9" width="29.1" height="201.1" rx="7"/><rect class="s1 bar lo" x="175.4" y="287.7" width="29.1" height="38.3" rx="7"/><rect class="muted" x="227.4" y="144.1" width="29.1" height="181.9" rx="7"/><rect class="s1 bar lo" x="227.4" y="297.3" width="29.1" height="28.7" rx="7"/><rect class="muted" x="279.4" y="96.2" width="29.1" height="229.8" rx="7"/><rect class="s1 bar lo" x="279.4" y="287.7" width="29.1" height="38.3" rx="7"/><rect class="muted" x="331.4" y="115.3" width="29.1" height="210.7" rx="7"/><rect class="s1 bar lo" x="331.4" y="297.3" width="29.1" height="28.7" rx="7"/><rect class="muted" x="383.4" y="67.5" width="29.1" height="258.5" rx="7"/><rect class="s1 bar lo" x="383.4" y="278.1" width="29.1" height="47.9" rx="7"/><rect class="muted" x="435.4" y="86.6" width="29.1" height="239.4" rx="7"/><rect class="s1 bar lo" x="435.4" y="287.7" width="29.1" height="38.3" rx="7"/><rect class="muted" x="487.4" y="48.3" width="29.1" height="277.7" rx="7"/><rect class="s1 bar lo" x="487.4" y="278.1" width="29.1" height="47.9" rx="7"/><rect class="muted" x="539.4" y="77.0" width="29.1" height="249.0" rx="7"/><rect class="s1 bar lo" x="539.4" y="287.7" width="29.1" height="38.3" rx="7"/><rect class="muted hi" x="591.4" y="29.2" width="29.1" height="296.8" rx="7"/><rect class="s1 bar hi" x="591.4" y="268.5" width="29.1" height="57.5" rx="7"/></g></svg></div>
+          </div>
+          <div class="g-card">
+            <div class="g-card__head"><div><h2 class="g-card__title">Act now</h2><p class="g-card__sub">Sorted by deadline</p></div></div>
+            <ul class="g-list">
+              <li class="g-list__item"><span class="g-date g-date--urgent"><b>21</b><span>Oct</span></span><span class="g-list__body"><span class="g-list__title">Coastal sensing pilot: tender closes</span><span class="g-list__meta">Ondine Labs · public tenders</span></span><span class="g-chip g-chip--warn">3 days</span></li>
+              <li class="g-list__item"><span class="g-date g-date--urgent"><b>24</b><span>Oct</span></span><span class="g-list__body"><span class="g-list__title">Innovation voucher, round 2</span><span class="g-list__meta">Brinewell · funding calls</span></span><span class="g-chip g-chip--warn">6 days</span></li>
+              <li class="g-list__item"><span class="g-date"><b>29</b><span>Oct</span></span><span class="g-list__body"><span class="g-list__title">Port electrification request for info</span><span class="g-list__meta">Tessera Marine · procurement</span></span><span class="g-chip">11 days</span></li>
+              <li class="g-list__item"><span class="g-date"><b>02</b><span>Nov</span></span><span class="g-list__body"><span class="g-list__title">Joint R&amp;D call opens</span><span class="g-list__meta">Quayside Robotics · funding calls</span></span><span class="g-chip">15 days</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="side-float sf-left g-float g-glass--thick g-refract" style="padding:14px 16px">
+        <div class="g-row" style="--g-gap:10px"><span class="g-tile g-tile--good"><svg class="g-i"><use href="../icons.svg#shield"/></svg></span><div><div class="g-small" style="font-weight:600">Evidence checked</div><div class="g-small" style="color:var(--g-glass-text-2)">3 sources agree</div></div></div>
+      </div>
+      <div class="side-float sf-right g-float g-glass--thick g-refract" style="padding:14px 16px; border-radius:22px">
+        <div class="g-pilot-status" style="margin-bottom:6px"><span class="g-wave" aria-hidden="true" style="--pilot-level:.7"><i></i><i></i><i></i><i></i><i></i></span>Listening</div>
+        <div style="font-size:17px; font-weight:500; letter-spacing:-0.015em; line-height:1.35">Which deadlines close this week?</div>
+      </div>
+      <button class="g-orb-btn g-orb-btn--inline side-float sf-orb" data-state="listening" aria-label="Ask by voice" style="--pilot-size:64px; position:absolute"><span class="g-orb"></span><svg class="g-i"><use href="../icons.svg#mic"/></svg></button>
+    </div>
+  </div>
+</div>
+
+<main class="g-container">
+  <section class="g-section" aria-label="In numbers">
+    <div class="g-kpi-strip">
+      <div class="g-kpi"><span class="g-kpi__label">Public sources read</span><span class="g-kpi__value">5</span><span class="g-kpi__meta">checked hourly</span></div>
+      <div class="g-kpi"><span class="g-kpi__label">Entities tracked</span><span class="g-kpi__value">1,284</span><span class="g-kpi__meta">+42 this week</span></div>
+      <div class="g-kpi"><span class="g-kpi__label">Answer time</span><span class="g-kpi__value">1.8<small>s</small></span><span class="g-kpi__meta">median, voice or text</span></div>
+      <div class="g-kpi"><span class="g-kpi__label">Claims with a source</span><span class="g-kpi__value">100<small>%</small></span><span class="g-kpi__meta">or shown as "no record"</span></div>
+    </div>
+  </section>
+
+  <section id="features" class="g-stack" style="--g-gap:28px">
+    <div class="g-stack" style="--g-gap:10px; max-width:640px">
+      <span class="g-eyebrow">What it does</span>
+      <h2 class="g-display">Three answers on one screen.</h2>
+    </div>
+    <div class="g-bento">
+      <article class="g-card g-span-7 g-rows-2" style="display:flex; flex-direction:column; gap:16px">
+        <div class="g-row" style="--g-gap:10px"><span class="g-tile"><svg class="g-i"><use href="../icons.svg#mic"/></svg></span><h3 class="g-h3">Ask out loud</h3></div>
+        <p class="g-muted">Hold the orb, ask a question, get a spoken answer with the records it used. Works in a noisy hall.</p>
+        <div class="g-stage g-stage--dark" style="padding:22px; margin-top:auto">
+          <div class="g-pilot-panel g-pilot-panel--inline g-glass--thick" style="max-width:440px">
+            <div class="g-pilot-status"><span class="g-wave" aria-hidden="true" style="--pilot-level:.5"><i></i><i></i><i></i><i></i><i></i></span>Answering</div>
+            <p class="g-pilot-transcript">Why is Ondine Labs first?</p>
+            <div class="g-pilot-answer">Their product matches the tender scope and the deadline is in 3 days. Two other sources confirm the fit.
+              <div class="g-row g-mt-2" style="--g-gap:6px"><span class="g-source">tenders · #4471</span><span class="g-source">registry · 77-0142</span></div></div>
+          </div>
+        </div>
+      </article>
+      <article class="g-card g-span-5">
+        <div class="g-row" style="--g-gap:10px"><span class="g-tile g-tile--teal"><svg class="g-i"><use href="../icons.svg#link"/></svg></span><h3 class="g-h3">Every claim has a receipt</h3></div>
+        <p class="g-muted g-mt-2">A source chip under every number. Missing data says so.</p>
+        <div class="g-row g-mt-4" style="--g-gap:6px"><span class="g-source">tenders · #4471</span><span class="g-source">calls · v2-118</span><span class="g-source">registry · 77-0193</span><span class="g-chip g-chip--outline g-chip--plain">no public record</span></div>
+      </article>
+      <article class="g-card g-span-5">
+        <div class="g-row" style="--g-gap:10px"><span class="g-tile g-tile--warn"><svg class="g-i"><use href="../icons.svg#clock"/></svg></span><h3 class="g-h3">Deadlines before they pass</h3></div>
+        <p class="g-muted g-mt-2">One list, sorted by what closes first.</p>
+        <div class="g-row g-mt-4" style="--g-gap:8px"><span class="g-date g-date--urgent"><b>21</b><span>Oct</span></span><span class="g-date g-date--urgent"><b>24</b><span>Oct</span></span><span class="g-date"><b>29</b><span>Oct</span></span><span class="g-date"><b>02</b><span>Nov</span></span></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="how" class="g-section">
+    <div class="steps">
+      <div class="g-stack" style="--g-gap:8px"><span class="num">01</span><h3 class="g-h2">Collect</h3><p class="g-muted">Five public sources, read every hour, with the fetch time stored next to each row.</p></div>
+      <div class="g-stack" style="--g-gap:8px"><span class="num">02</span><h3 class="g-h2">Rank</h3><p class="g-muted">A printed rule scores fit and evidence. No black box: the rule is on the page.</p></div>
+      <div class="g-stack" style="--g-gap:8px"><span class="num">03</span><h3 class="g-h2">Act</h3><p class="g-muted">The six that matter, with a next step and the record behind it.</p></div>
+    </div>
+  </section>
+
+  <section id="sources" class="g-stage g-stage--dark cta-band">
+    <h2 class="g-display" style="color:#F3F4F6; max-width:16ch">Try it on your own question.</h2>
+    <label class="g-ask" style="max-width:560px"><svg class="g-i"><use href="../icons.svg#search"/></svg><input placeholder="Which grants close before December?" aria-label="Ask"><button class="g-ask__mic" type="button" aria-label="Speak"><svg class="g-i"><use href="../icons.svg#mic"/></svg></button></label>
+    <p class="g-small" style="color:#B4BAC6">Sample template. Every name and number on this page is invented.</p>
+  </section>
+  <footer class="g-row g-row--between g-small g-faint" style="padding:32px 4px 120px"><span>Tidewell is a sample product name used by the glass kit templates.</span><span>MIT · The Mishakin Group</span></footer>
+</main>
+</body>
+</html>

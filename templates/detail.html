@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ondine Labs · Tidewell (sample)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../glass.css">
+<script src="../glass.js" defer></script>
+<style>
+  .crumbs { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--g-text-3); margin-bottom: 18px; }
+  .crumbs a:hover { color: var(--g-text); }
+  .entity { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px; align-items: center; margin-bottom: 24px; }
+  .entity__id { display: flex; gap: 18px; align-items: flex-start; }
+  .entity .g-logo { width: 64px; height: 64px; border-radius: 18px; font-size: 22px; }
+  .why { font-size: clamp(17px, 1.4vw, 20px); line-height: 1.45; letter-spacing: -0.01em; max-width: 54ch; color: var(--g-text-2); }
+  .why b { color: var(--g-text); font-weight: 600; }
+  .verdict { display: flex; align-items: center; gap: 18px; padding: 16px 20px 16px 16px; border-radius: 26px; }
+  .ev { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 14px; padding: 16px 0; border-top: 1px solid var(--g-line); }
+  .ev:first-of-type { border-top: 0; padding-top: 4px; }
+  .ev p { font-size: 14.5px; line-height: 1.5; }
+  .step { display: grid; grid-template-columns: 28px minmax(0, 1fr) auto; gap: 12px; align-items: start; padding: 12px 0; border-top: 1px solid var(--g-line); }
+  .step:first-of-type { border-top: 0; padding-top: 0; }
+  .step .n { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; font-size: 12.5px; font-weight: 650; background: var(--g-sunken); color: var(--g-text-2); }
+  .step.is-next .n { background: var(--g-accent); color: var(--g-accent-ink); }
+  .rd { display: grid; grid-template-columns: 110px minmax(0, 1fr) 44px; gap: 12px; align-items: center; padding: 9px 0; }
+  .rd small { grid-column: 2 / 4; margin-top: -6px; color: var(--g-text-3); font-size: 12px; }
+  @media (max-width: 860px) { .entity { grid-template-columns: 1fr; } }
+  @media (max-width: 640px) { .entity .g-logo { width: 52px; height: 52px; font-size: 18px; } .rd { grid-template-columns: 88px minmax(0, 1fr) 40px; } .verdict { width: 100%; } }
+</style>
+</head>
+<body class="g">
+
+<nav class="g-nav" aria-label="Main">
+  <a class="g-nav__brand" href="landing.html"><span class="g-nav__mark"><svg class="g-i g-i--sm"><use href="../icons.svg#radar"/></svg></span>Tidewell</a>
+  <span class="g-sample" title="Every name and number on this page is sample data">Sample</span>
+  <div class="g-nav__links">
+    <a href="dashboard.html">Overview</a>
+    <a href="dashboard.html#signals">Signals</a>
+    <a href="detail.html" aria-current="page">Entities</a>
+    <a href="dashboard.html#sources">Sources</a>
+  </div>
+  <div class="g-nav__actions">
+    <button class="g-btn g-btn--ghost g-btn--icon" data-g-theme aria-label="Toggle light or dark"><svg class="g-i g-i--sm"><use href="../icons.svg#moon"/></svg></button>
+    <span class="g-avatar" aria-label="Signed in as sample user">SU</span>
+  </div>
+</nav>
+
+<main class="g-main g-container">
+  <div class="crumbs"><a href="dashboard.html">Overview</a><svg class="g-i g-i--sm"><use href="../icons.svg#chevron-right"/></svg><a href="dashboard.html#signals">Act now</a><svg class="g-i g-i--sm"><use href="../icons.svg#chevron-right"/></svg><span style="color:var(--g-text)">Ondine Labs</span></div>
+
+  <header class="entity">
+    <div class="g-stack" style="--g-gap:14px">
+      <div class="entity__id">
+        <span class="g-logo" aria-hidden="true">OL</span>
+        <div class="g-stack" style="--g-gap:8px">
+          <h1 class="g-h1" style="font-size:clamp(30px,3vw,44px)">Ondine Labs</h1>
+          <div class="g-row" style="--g-gap:6px"><span class="g-chip g-chip--accent g-chip--plain">Coastal sensing</span><span class="g-chip g-chip--plain">Founded 2021</span><span class="g-chip g-chip--plain">14 staff</span></div>
+        </div>
+      </div>
+      <p class="why">Why now: <b>a public tender that fits their sensor line closes in 3 days</b>, and two independent records confirm the fit.</p>
+    </div>
+    <div class="verdict g-glass g-glass--tint">
+      <div class="g-ring" style="--v:82; --size:84px"><div><b>82</b><span>of 100</span></div></div>
+      <div class="g-stack" style="--g-gap:8px; align-items:flex-start">
+        <span class="g-chip g-chip--warn">Act now · 3 days</span>
+        <div class="g-row" style="--g-gap:8px"><button class="g-btn g-btn--primary" data-g-open="#draft">Draft intro<svg class="g-i g-i--sm"><use href="../icons.svg#arrow-right"/></svg></button><button class="g-btn" onclick="GlassKit.toast('Added to your watch list', {icon:'check', tone:'good', sprite:'../icons.svg'})">Watch</button></div>
+      </div>
+    </div>
+  </header>
+
+  <div class="g-shell">
+    <div class="g-bento" style="min-width:0">
+      <section class="g-card g-span-7" aria-labelledby="ev-h">
+        <div class="g-card__head"><div><h2 class="g-card__title" id="ev-h">Why it surfaced</h2><p class="g-card__sub">3 records, newest first</p></div><span class="g-chip g-chip--good">High confidence</span></div>
+        <div class="ev"><span class="g-tile"><svg class="g-i"><use href="../icons.svg#file"/></svg></span>
+          <div class="g-stack" style="--g-gap:8px"><p>Tender for a coastal water-quality sensing pilot lists buoy-mounted turbidity sensors, their main product.</p>
+          <div class="g-row" style="--g-gap:8px"><a class="g-source" href="#"><svg class="g-i"><use href="../icons.svg#link"/></svg>tenders · #4471</a><span class="g-small g-faint">published 14 Oct · fetched 2 h ago</span></div></div></div>
+        <div class="ev"><span class="g-tile g-tile--teal"><svg class="g-i"><use href="../icons.svg#database"/></svg></span>
+          <div class="g-stack" style="--g-gap:8px"><p>Registry filing adds "environmental monitoring equipment" to the line of business.</p>
+          <div class="g-row" style="--g-gap:8px"><a class="g-source" href="#"><svg class="g-i"><use href="../icons.svg#link"/></svg>registry · 77-0142</a><span class="g-small g-faint">filed 2 Oct</span></div></div></div>
+        <div class="ev"><span class="g-tile g-tile--neutral"><svg class="g-i"><use href="../icons.svg#users"/></svg></span>
+          <div class="g-stack" style="--g-gap:8px"><p>Three field-engineer job posts in the last 30 days.</p>
+          <div class="g-row" style="--g-gap:8px"><a class="g-source" href="#"><svg class="g-i"><use href="../icons.svg#link"/></svg>jobs board · 3 posts</a><span class="g-chip g-chip--outline g-chip--plain">medium confidence</span></div></div></div>
+      </section>
+
+      <section class="g-card g-span-5" aria-labelledby="ns-h">
+        <div class="g-card__head"><div><h2 class="g-card__title" id="ns-h">Next steps</h2><p class="g-card__sub">From the decision table</p></div></div>
+        <div class="step is-next"><span class="n">1</span><div><div style="font-weight:550">Confirm the match</div><div class="g-small g-faint">Check the tender scope against their spec sheet</div></div><span class="g-chip g-chip--accent g-chip--plain">Today</span></div>
+        <div class="step"><span class="n">2</span><div><div style="font-weight:550">Send a short intro</div><div class="g-small g-faint">Draft is ready, cites the tender</div></div><span class="g-small g-faint">Tue</span></div>
+        <div class="step"><span class="n">3</span><div><div style="font-weight:550">Offer a partner for the bid</div><div class="g-small g-faint">Two partners in your list fit</div></div><span class="g-small g-faint">Wed</span></div>
+      </section>
+
+      <section class="g-card g-span-5" aria-labelledby="rd-h">
+        <div class="g-card__head"><div><h2 class="g-card__title" id="rd-h">Readiness</h2><p class="g-card__sub">Levels 1 to 9, rule printed under each</p></div></div>
+        <div class="rd"><span class="g-small">Technology</span><div class="g-steps" style="--_c:var(--g-good)"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div><b class="g-num">7/9</b><small>Pilot run in the field, report on file</small></div>
+        <div class="rd"><span class="g-small">Market</span><div class="g-steps"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i></div><b class="g-num">5/9</b><small>Two paying public buyers</small></div>
+        <div class="rd"><span class="g-small">Funding</span><div class="g-steps" style="--_c:var(--g-warn)"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div><b class="g-num">3/9</b><small>One public grant, no equity round on record</small></div>
+      </section>
+
+      <section class="g-card g-span-7" aria-labelledby="tl-h">
+        <div class="g-card__head"><div><h2 class="g-card__title" id="tl-h">Timeline</h2><p class="g-card__sub">Public events only</p></div></div>
+        <ol class="g-timeline">
+          <li class="is-key"><div style="font-weight:550">Tender closes</div><div class="g-small g-faint">Wed 21 Oct · tenders #4471</div></li>
+          <li><div style="font-weight:550">Tender published</div><div class="g-small g-faint">Wed 14 Oct</div></li>
+          <li><div style="font-weight:550">Line of business updated</div><div class="g-small g-faint">Fri 2 Oct · registry 77-0142</div></li>
+          <li><div style="font-weight:550">Public grant awarded</div><div class="g-small g-faint">March 2026</div></li>
+        </ol>
+      </section>
+    </div>
+
+    <aside class="g-shell__side" aria-label="Ask about this entity">
+      <div class="g-pilot-panel g-pilot-panel--inline" data-state="speaking">
+        <div class="g-pilot-status"><span class="g-wave" aria-hidden="true" style="--pilot-level:.55"><i></i><i></i><i></i><i></i><i></i></span>Answering</div>
+        <p class="g-pilot-transcript">What would make this a no?</p>
+        <div class="g-pilot-answer">If their sensors are not certified for open water. No public record shows that certificate yet, so step 1 checks it.
+          <div class="g-row g-mt-2" style="--g-gap:6px"><span class="g-source">tenders · #4471 §3.2</span><span class="g-chip g-chip--outline g-chip--plain">no public record</span></div></div>
+        <div class="g-suggest"><button>Who else bid last time?</button><button>Draft the intro</button></div>
+      </div>
+      <section class="g-card g-card--sunken">
+        <dl class="g-kv"><dt>Business ID</dt><dd class="g-mono">sample-0142</dd><dt>Region</dt><dd>Southwest coast</dd><dt>Last signal</dt><dd>2 h ago</dd><dt>Sources</dt><dd>3 of 5</dd></dl>
+      </section>
+      <p class="g-small g-faint" style="padding:0 6px">Sample data. The entity, records and numbers are invented for the template.</p>
+    </aside>
+  </div>
+</main>
+
+<nav class="g-tabbar g-tabbar--with-orb" aria-label="Sections">
+  <a href="dashboard.html"><svg class="g-i"><use href="../icons.svg#radar"/></svg>Overview</a>
+  <a href="dashboard.html#signals"><svg class="g-i"><use href="../icons.svg#list"/></svg>Signals</a>
+  <a href="detail.html" aria-current="page"><svg class="g-i"><use href="../icons.svg#building"/></svg>Entities</a>
+  <a href="dashboard.html#sources"><svg class="g-i"><use href="../icons.svg#database"/></svg>Sources</a>
+</nav>
+<button class="g-orb-btn" id="orb" aria-label="Ask by voice" data-state="idle"><span class="g-orb"></span><svg class="g-i"><use href="../icons.svg#mic"/></svg></button>
+<div class="g-pilot-panel" id="pilot" hidden role="dialog" aria-label="Voice assistant">
+  <div class="g-pilot-status"><span class="g-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span data-pilot-status>Listening</span></div>
+  <p class="g-pilot-transcript">Summarise Ondine Labs <span class="is-partial">in one line</span></p>
+</div>
+
+<dialog class="g-sheet g-sheet--center" id="draft" aria-label="Draft introduction">
+  <div class="g-sheet__body">
+    <div class="g-row g-row--between"><h2 class="g-h2">Draft intro</h2><button class="g-btn g-btn--ghost g-btn--icon" data-g-close aria-label="Close"><svg class="g-i"><use href="../icons.svg#x"/></svg></button></div>
+    <div class="g-pilot-answer">Hello, we noticed tender #4471 asks for buoy-mounted turbidity sensing, which matches your current line. Would a 15-minute call this week help you decide whether to bid?</div>
+    <div class="g-row" style="justify-content:flex-end"><button class="g-btn" data-g-close>Cancel</button><button class="g-btn g-btn--primary" data-g-close>Copy draft</button></div>
+  </div>
+</dialog>
+<script>document.addEventListener("DOMContentLoaded", function () { GlassKit.demoPilot(document.getElementById("orb"), document.getElementById("pilot")); });</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+/* shadcn/ui theme carrying the glass.css tokens (Tailwind v4 + shadcn "new-york" style). MIT, The Mishakin Group.
+
+   Setup (Next.js 16, after `npx shadcn@latest init`):
+   1. Copy glass.css and tailwind/theme.css into app/ (rename theme.css to glass-theme.css).
+   2. app/globals.css: keep `@import "tailwindcss";` and shadcn's `@theme inline { --color-background: var(--background); ... }`
+      block, then REPLACE shadcn's `:root { ... }` and `.dark { ... }` blocks with this file's content, and add
+        @import "./glass.css";
+        @import "./glass-theme.css";
+   3. Theme switch: glass tokens flip on <html data-theme="dark">. With next-themes use
+        <ThemeProvider attribute="data-theme" defaultTheme="system">
+      and shadcn's dark: variant then needs:  @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+      (glass-theme.css already declares it).
+   4. Where glass goes: Card, Table, Tabs content = solid (default). Glass on the control layer only:
+        <header className="glass rounded-pill fixed top-3.5 inset-x-4 ...">            (floating nav)
+        <DialogContent className="glass-thick rounded-2xl">                              (sheet / dialog)
+        <PopoverContent className="glass-thick">  <CommandDialog className="glass-thick">  <Sonner toastOptions={{className:"glass-thick rounded-pill"}}>
+        <TabsList className="glass rounded-pill">                                        (segmented control over a visual)
+   Never put glass on a Card that sits on a plain page: it is invisible there and fails the layering rule. */
+
+:root, [data-theme="light"], [data-theme="dark"] {
+  --radius: 16px;                         /* shadcn derives sm/md/lg/xl from this; cards come out at 16-20px */
+  --background: var(--g-bg);
+  --foreground: var(--g-text);
+  --card: var(--g-surface);
+  --card-foreground: var(--g-text);
+  --popover: var(--g-surface);
+  --popover-foreground: var(--g-text);
+  --primary: var(--g-accent);
+  --primary-foreground: var(--g-accent-ink);
+  --secondary: var(--g-sunken);
+  --secondary-foreground: var(--g-text);
+  --muted: var(--g-surface-2);
+  --muted-foreground: var(--g-text-2);
+  --accent: var(--g-sunken);              /* shadcn "accent" = hover background, not the brand colour */
+  --accent-foreground: var(--g-text);
+  --destructive: var(--g-bad);
+  --border: var(--g-line);
+  --input: var(--g-line-2);
+  --ring: var(--g-accent-text);
+  --chart-1: var(--g-chart-1);
+  --chart-2: var(--g-chart-2);
+  --chart-3: var(--g-chart-3);
+  --chart-4: var(--g-chart-4);
+  --chart-5: var(--g-chart-5);
+  --sidebar: var(--g-surface);
+  --sidebar-foreground: var(--g-text);
+  --sidebar-primary: var(--g-accent);
+  --sidebar-primary-foreground: var(--g-accent-ink);
+  --sidebar-accent: var(--g-sunken);
+  --sidebar-accent-foreground: var(--g-text);
+  --sidebar-border: var(--g-line);
+  --sidebar-ring: var(--g-accent-text);
+}
+
+body { background-color: var(--g-bg); background-image: var(--g-field); background-attachment: fixed; font-family: var(--g-font); }

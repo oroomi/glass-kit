@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Glass kit · component gallery</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../glass.css">
+<script src="../glass.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.js" defer></script>
+<style>
+  .sec { padding-block: 40px; border-top: 1px solid var(--g-line); display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 32px; }
+  .sec > header { display: flex; flex-direction: column; gap: 6px; }
+  .sec > header p { font-size: 13.5px; color: var(--g-text-2); }
+  .sec code, .g-code { font-family: var(--g-font-mono); font-size: 12px; color: var(--g-text-2); background: var(--g-surface-2); border: 1px solid var(--g-line); padding: 1px 6px; border-radius: 6px; }
+  .demo { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  /* a busy, colourful backdrop so the materials show what they do */
+  .backdrop { position: relative; border-radius: var(--g-r-xl); overflow: hidden; padding: 28px; min-height: 300px; isolation: isolate;
+    background: radial-gradient(40% 60% at 15% 30%, #2F80ED, transparent 70%), radial-gradient(35% 55% at 80% 20%, #14B8A6, transparent 70%), radial-gradient(40% 60% at 60% 95%, #F59E0B, transparent 70%), #0E1726; }
+  .backdrop .lines { position: absolute; inset: 0; z-index: -1; padding: 22px; color: rgb(255 255 255 / .9); font: 600 30px/1.15 var(--g-font); letter-spacing: -0.03em; overflow: hidden; }
+  .swatches { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; position: relative; }
+  .swatch { border-radius: 22px; padding: 16px; min-height: 150px; display: flex; flex-direction: column; justify-content: space-between; gap: 8px; }
+  .swatch b { font-size: 15px; } .swatch small { font-size: 12.5px; color: var(--g-glass-text-2); }
+  .phone { position: relative; width: 300px; height: 300px; border-radius: 36px; overflow: hidden; border: 1px solid var(--g-line); background: var(--g-bg); padding: 16px; }
+  .phone .g-tabbar { position: absolute; display: flex; left: 10px; right: 76px; bottom: 12px; height: 58px; }
+  .phone .g-orb-btn { position: absolute; right: 12px; bottom: 12px; --pilot-size: 58px; }
+  .orbs { display: flex; gap: 28px; flex-wrap: wrap; align-items: flex-end; }
+  .orbs figure { display: flex; flex-direction: column; align-items: center; gap: 10px; font-size: 12px; color: var(--g-text-3); }
+  @media (max-width: 860px) { .sec { grid-template-columns: 1fr; gap: 16px; } .swatches { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+</style>
+</head>
+<body class="g">
+
+<nav class="g-nav" aria-label="Main">
+  <a class="g-nav__brand" href="gallery.html"><span class="g-nav__mark"><svg class="g-i g-i--sm"><use href="../icons.svg#layers"/></svg></span>Glass kit</a>
+  <span class="g-sample" title="Names and numbers in this gallery are sample data">Sample</span>
+  <div class="g-nav__links">
+    <a href="gallery.html" aria-current="page">Components</a>
+    <a href="landing.html">Landing</a>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="detail.html">Detail</a>
+  </div>
+  <div class="g-nav__actions">
+    <div class="g-seg g-hide-phone" aria-label="Accent">
+      <button data-g-accent="blue" aria-selected="true" aria-label="Blue accent"><span style="width:12px;height:12px;border-radius:50%;background:#0066D6"></span></button>
+      <button data-g-accent="teal" aria-label="Teal accent"><span style="width:12px;height:12px;border-radius:50%;background:#0F766E"></span></button>
+      <button data-g-accent="green" aria-label="Green accent"><span style="width:12px;height:12px;border-radius:50%;background:#15803D"></span></button>
+      <button data-g-accent="orange" aria-label="Orange accent"><span style="width:12px;height:12px;border-radius:50%;background:#C2410C"></span></button>
+      <button data-g-accent="graphite" aria-label="Graphite accent"><span style="width:12px;height:12px;border-radius:50%;background:#1F2937; box-shadow: inset 0 0 0 1px rgb(255 255 255 / .35)"></span></button>
+    </div>
+    <button class="g-btn g-btn--ghost g-btn--icon" data-g-theme aria-label="Toggle light or dark"><svg class="g-i g-i--sm"><use href="../icons.svg#moon"/></svg></button>
+  </div>
+</nav>
+
+<main class="g-main g-container">
+  <header class="g-stack" style="--g-gap:14px; padding-bottom:28px">
+    <span class="g-eyebrow">glass.css · one file · no build</span>
+    <h1 class="g-display" style="max-width:18ch">Liquid glass on the controls, solid cards for the content.</h1>
+    <p class="g-lede">Every component below is plain HTML with <code class="g-code">g-</code> classes. Toggle the theme and the accent in the bar above; add <code class="g-code">?rt=1</code> to the URL to preview the reduced-transparency fallback.</p>
+    <div class="g-row"><a class="g-btn g-btn--primary" href="dashboard.html">Dashboard template<svg class="g-i g-i--sm"><use href="../icons.svg#arrow-right"/></svg></a><a class="g-btn" href="landing.html">Landing</a><a class="g-btn" href="detail.html">Detail</a></div>
+  </header>
+
+  <section class="sec" id="materials">
+    <header><h2 class="g-h3">Glass materials</h2><p>Thin for icons and big labels, regular for bars, thick for sheets and anything with paragraphs. Clear is decorative only. <code>.g-refract</code> adds edge refraction in Chromium.</p></header>
+    <div class="backdrop">
+      <div class="lines" aria-hidden="true">Signals 31 · act now 6 · tenders · registry · funding calls · Signals 31 · act now 6 · tenders · registry · funding calls · Signals 31 · act now 6 · tenders · registry · funding calls · Signals 31 · act now 6</div>
+      <div class="swatches">
+        <div class="swatch g-glass g-glass--thin"><b>Thin</b><small>.g-glass--thin<br>blur 12 · large text only</small></div>
+        <div class="swatch g-glass"><b>Regular</b><small>.g-glass<br>blur 20 · nav, tab bar, ask bar</small></div>
+        <div class="swatch g-glass g-glass--thick g-refract"><b>Thick + refract</b><small>.g-glass--thick .g-refract<br>sheets, overlays, tooltips</small></div>
+        <div class="swatch g-glass g-glass--clear" role="img" aria-label="Clear glass: decorative only, no text" style="align-items:center; justify-content:center"><svg class="g-i" style="width:40px;height:40px;color:#fff"><use href="../icons.svg#sparkles"/></svg></div>
+      </div>
+      <p class="g-small" style="position:relative; margin-top:14px; color:#fff; background:rgb(14 23 38 / .85); display:inline-block; padding:4px 10px; border-radius:8px">Fourth swatch: clear glass, decorative only, never text.</p>
+    </div>
+  </section>
+
+  <section class="sec" id="type">
+    <header><h2 class="g-h3">Type</h2><p>Geist + Geist Mono. Big type is tight (-0.045em), small type is loose. Numbers are tabular.</p></header>
+    <div class="g-stack" style="--g-gap:14px">
+      <div class="g-hero-title">Hero 92</div>
+      <div class="g-display">Display 60</div>
+      <div class="g-h1">Heading one 38</div>
+      <div class="g-h2">Heading two 22</div>
+      <div class="g-h3">Heading three 17</div>
+      <p class="g-lede">Lede 20: one sentence that tells the story of the screen.</p>
+      <p>Body 15: what you read in cards and tables, at 1.55 line height.</p>
+      <p class="g-small g-muted">Small 13: metadata, captions, source lines.</p>
+      <span class="g-eyebrow">Eyebrow 11.5 uppercase</span>
+      <div class="g-kpi g-kpi--hero"><span class="g-kpi__value">1,284<small>entities</small></span></div>
+    </div>
+  </section>
+
+  <section class="sec" id="buttons">
+    <header><h2 class="g-h3">Buttons</h2><p>Pill shaped, 32 / 40 / 50 px. One primary per screen.</p></header>
+    <div class="g-stack">
+      <div class="demo"><button class="g-btn g-btn--primary">Primary<svg class="g-i g-i--sm"><use href="../icons.svg#arrow-right"/></svg></button><button class="g-btn">Default</button><button class="g-btn g-btn--ink">Ink</button><button class="g-btn g-btn--ghost">Ghost</button><button class="g-btn g-btn--glass"><svg class="g-i g-i--sm"><use href="../icons.svg#mic"/></svg>Glass</button></div>
+      <div class="demo"><button class="g-btn g-btn--primary g-btn--lg">Large</button><button class="g-btn g-btn--sm">Small</button><button class="g-btn g-btn--icon" aria-label="Add"><svg class="g-i g-i--sm"><use href="../icons.svg#plus"/></svg></button><button class="g-btn">Search <span class="g-kbd">/</span></button></div>
+      <div class="demo"><span class="g-tile"><svg class="g-i"><use href="../icons.svg#radar"/></svg></span><span class="g-tile g-tile--teal"><svg class="g-i"><use href="../icons.svg#database"/></svg></span><span class="g-tile g-tile--good"><svg class="g-i"><use href="../icons.svg#shield"/></svg></span><span class="g-tile g-tile--warn"><svg class="g-i"><use href="../icons.svg#clock"/></svg></span><span class="g-tile g-tile--bad"><svg class="g-i"><use href="../icons.svg#alert"/></svg></span><span class="g-tile g-tile--neutral"><svg class="g-i"><use href="../icons.svg#file"/></svg></span><span class="g-avatar">SU</span><span class="g-logo">OL</span></div>
+    </div>
+  </section>
+
+  <section class="sec" id="controls">
+    <header><h2 class="g-h3">Segmented, tabs, chips</h2><p>Segmented for 2 to 4 views of the same data; pill tabs for filters with counts; chips for status; source chips under every number.</p></header>
+    <div class="g-stack">
+      <div class="demo"><div class="g-seg" role="tablist"><button role="tab" aria-selected="true">Week</button><button role="tab" aria-selected="false">Month</button><button role="tab" aria-selected="false">Quarter</button></div>
+        <div class="g-seg g-seg--glass" role="tablist"><button role="tab" aria-selected="false">Map</button><button role="tab" aria-selected="true">List</button></div></div>
+      <div class="g-tabs" role="tablist"><button role="tab" aria-selected="true">All <span class="g-count">31</span></button><button role="tab" aria-selected="false">Act now <span class="g-count">6</span></button><button role="tab" aria-selected="false">Watch <span class="g-count">11</span></button><button role="tab" aria-selected="false">New <span class="g-count">4</span></button></div>
+      <div class="demo"><span class="g-chip">Neutral</span><span class="g-chip g-chip--accent">Accent</span><span class="g-chip g-chip--good">Live</span><span class="g-chip g-chip--warn">3 days</span><span class="g-chip g-chip--bad">Failed</span><span class="g-chip g-chip--outline g-chip--plain">no public record</span><span class="g-sample">Sample</span></div>
+      <div class="demo"><a class="g-source" href="#"><svg class="g-i"><use href="../icons.svg#link"/></svg>tenders · #4471</a><span class="g-source">registry · 77-0142</span><span class="g-delta g-delta--up">19%</span><span class="g-delta g-delta--down">4%</span></div>
+    </div>
+  </section>
+
+  <section class="sec" id="ask">
+    <header><h2 class="g-h3">Ask bar</h2><p>Glass capsule, 16 px input (no iOS zoom), mic button in the accent. Suggestions are real questions the demo can answer.</p></header>
+    <div class="g-stack" style="max-width:640px">
+      <label class="g-ask"><svg class="g-i"><use href="../icons.svg#search"/></svg><input placeholder="Which deadlines close first?" aria-label="Ask"><span class="g-kbd g-hide-phone">/</span><button class="g-ask__mic" type="button" aria-label="Speak"><svg class="g-i"><use href="../icons.svg#mic"/></svg></button></label>
+      <div class="g-suggest"><button>What changed since Friday?</button><button>Why is Ondine first?</button><button>Show thin evidence</button></div>
+      <label class="g-ask g-ask--sm"><svg class="g-i g-i--sm"><use href="../icons.svg#search"/></svg><input placeholder="Small variant for side panels" aria-label="Ask small"><button class="g-ask__mic" type="button" aria-label="Speak"><svg class="g-i g-i--sm"><use href="../icons.svg#mic"/></svg></button></label>
+    </div>
+  </section>
+
+  <section class="sec" id="kpi">
+    <header><h2 class="g-h3">Numbers</h2><p>One hero number per screen. Secondary numbers sit in a single strip, not four identical cards.</p></header>
+    <div class="g-stack">
+      <div class="g-kpi-strip">
+        <div class="g-kpi"><span class="g-kpi__label"><span class="g-tile g-tile--sm"><svg class="g-i"><use href="../icons.svg#zap"/></svg></span>Signals</span><span class="g-kpi__value">31</span><span class="g-kpi__meta"><span class="g-delta g-delta--up">19%</span> vs avg</span></div>
+        <div class="g-kpi"><span class="g-kpi__label"><span class="g-tile g-tile--sm g-tile--teal"><svg class="g-i"><use href="../icons.svg#building"/></svg></span>Entities</span><span class="g-kpi__value">1,284</span><span class="g-kpi__meta">+42 new</span></div>
+        <div class="g-kpi"><span class="g-kpi__label"><span class="g-tile g-tile--sm g-tile--good"><svg class="g-i"><use href="../icons.svg#shield"/></svg></span>Evidence</span><span class="g-kpi__value">0.71</span><span class="g-kpi__meta">avg score</span></div>
+        <div class="g-kpi"><span class="g-kpi__label"><span class="g-tile g-tile--sm g-tile--warn"><svg class="g-i"><use href="../icons.svg#database"/></svg></span>Sources</span><span class="g-kpi__value">5<span class="g-dim">/6</span></span><span class="g-kpi__meta">1 delayed</span></div>
+      </div>
+      <div class="demo" style="gap:28px">
+        <div class="g-ring" style="--v:82"><div><b>82</b><span>score</span></div></div>
+        <div class="g-ring" style="--v:41; --_c: var(--g-warn); --size:72px; --w:7px"><div><b>41</b></div></div>
+        <div class="g-stack" style="--g-gap:10px; width:240px"><div class="g-meter" style="--v:78"><i></i></div><div class="g-meter g-meter--good" style="--v:56"><i></i></div><div class="g-meter g-meter--warn" style="--v:30"><i></i></div><div class="g-steps"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="cards">
+    <header><h2 class="g-h3">Cards and bento</h2><p>Solid white (or #14161B) cards, 22 px radius, hairline border, soft shadow. Bento spans differ so no two neighbours share a shape.</p></header>
+    <div class="g-bento">
+      <article class="g-card g-span-8"><div class="g-card__head"><div><h3 class="g-card__title">Card with header</h3><p class="g-card__sub">Title, one-line subtitle, one action</p></div><button class="g-btn g-btn--sm">View all</button></div><p class="g-muted">Content goes here. Use .g-card--sunken for secondary panels and .g-card--link for clickable cards.</p><div class="g-card__foot"><svg class="g-i g-i--sm"><use href="../icons.svg#clock"/></svg>Updated 2 h ago</div></article>
+      <article class="g-card g-card--sunken g-span-4"><h3 class="g-card__title">Sunken</h3><p class="g-small g-muted g-mt-2">For context, settings, key-value facts.</p></article>
+      <article class="g-card g-span-4 g-card--link"><span class="g-tile"><svg class="g-i"><use href="../icons.svg#radar"/></svg></span><h3 class="g-card__title g-mt-4">Clickable</h3><p class="g-small g-muted">Lifts 2 px on hover.</p></article>
+      <article class="g-stage g-stage--dark g-span-8" style="padding:22px; min-height:150px"><span class="g-eyebrow" style="color:#9AA1AE">.g-stage--dark</span><p style="font-size:22px; letter-spacing:-0.02em; font-weight:600; margin-top:8px; max-width:24ch">The stage holds the visual; glass overlays float on it.</p><div class="g-float g-glass--thick" style="position:absolute; right:20px; bottom:20px">Glass on a visual</div></article>
+    </div>
+  </section>
+
+  <section class="sec" id="lists">
+    <header><h2 class="g-h3">Lists and timeline</h2><p>The "act now" list: date block, two-line title, meta, status chip.</p></header>
+    <div class="g-bento">
+      <article class="g-card g-span-7"><ul class="g-list">
+        <li><a class="g-list__item" href="#"><span class="g-date g-date--urgent"><b>21</b><span>Oct</span></span><span class="g-list__body"><span class="g-list__title">Coastal sensing pilot: tender closes</span><span class="g-list__meta">Ondine Labs · public tenders</span></span><span class="g-list__end"><span class="g-chip g-chip--warn">3 days</span></span></a></li>
+        <li><a class="g-list__item" href="#"><span class="g-date"><b>29</b><span>Oct</span></span><span class="g-list__body"><span class="g-list__title">Port electrification request for info</span><span class="g-list__meta">Tessera Marine · procurement</span></span><span class="g-list__end"><span class="g-chip">11 days</span><svg class="g-i g-i--sm"><use href="../icons.svg#chevron-right"/></svg></span></a></li>
+      </ul></article>
+      <article class="g-card g-span-5"><ol class="g-timeline"><li class="is-key"><div style="font-weight:550">Tender closes</div><div class="g-small g-faint">Wed 21 Oct</div></li><li><div style="font-weight:550">Tender published</div><div class="g-small g-faint">Wed 14 Oct</div></li></ol></article>
+    </div>
+  </section>
+
+  <section class="sec" id="table">
+    <header><h2 class="g-h3">Data table</h2><p>Sticky header, group rows, inline bars, mono source chips. On phones <code>.g-table--stack</code> turns rows into cards using <code>data-label</code>.</p></header>
+    <div class="g-table-wrap"><table class="g-table g-table--stack">
+      <thead><tr><th>Entity</th><th>Signal</th><th>Evidence</th><th>Source</th><th class="is-num">Seen</th></tr></thead>
+      <tbody>
+        <tr class="is-group"><td colspan="5">Act now</td></tr>
+        <tr><td class="is-title is-strong" data-label="Entity">Ondine Labs</td><td data-label="Signal">Tender matches product line</td><td data-label="Evidence"><span class="g-bar" style="--v:86"><i></i>0.86</span></td><td data-label="Source"><span class="g-source">tenders · #4471</span></td><td class="is-num" data-label="Seen">2 h ago</td></tr>
+        <tr><td class="is-title is-strong" data-label="Entity">Brinewell</td><td data-label="Signal">Eligible for voucher round</td><td data-label="Evidence"><span class="g-bar" style="--v:74"><i></i>0.74</span></td><td data-label="Source"><span class="g-source">calls · v2-118</span></td><td class="is-num" data-label="Seen">5 h ago</td></tr>
+      </tbody></table></div>
+  </section>
+
+  <section class="sec" id="charts">
+    <header><h2 class="g-h3">Charts</h2><p>Plain SVG with <code>.g-chart</code> classes, or Chart.js with <code>GlassKit.chartDefaults(Chart)</code>. One accent series; everything else grey. Axis labels in HTML so they never scale.</p></header>
+    <div class="g-bento">
+      <article class="g-card g-span-6"><div class="g-card__head"><div><h3 class="g-card__title">Chart.js line</h3><p class="g-card__sub">Pinned chart.js@4.4.1 from jsDelivr</p></div><div class="g-legend"><span style="--_c:var(--g-chart-1)">This year</span><span style="--_c:var(--g-chart-5)">Last year</span></div></div><div style="height:200px"><canvas id="cj" aria-label="Sample line chart"></canvas></div></article>
+      <article class="g-card g-span-6"><div class="g-card__head"><div><h3 class="g-card__title">SVG bars</h3><p class="g-card__sub">No library</p></div></div>
+        <div class="g-chart"><svg viewBox="0 0 400 160" role="img" aria-label="Sample bars"><g class="grid"><line x1="0" x2="400" y1="150" y2="150"/><line x1="0" x2="400" y1="100" y2="100"/><line x1="0" x2="400" y1="50" y2="50"/></g>
+          <rect class="muted" x="10" y="90" width="40" height="60" rx="7"/><rect class="muted" x="76" y="70" width="40" height="80" rx="7"/><rect class="muted" x="142" y="80" width="40" height="70" rx="7"/><rect class="muted" x="208" y="55" width="40" height="95" rx="7"/><rect class="muted" x="274" y="62" width="40" height="88" rx="7"/><rect class="s1 bar" x="340" y="28" width="40" height="122" rx="7"/></svg>
+        <div class="g-chart__x" style="--n:6"><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span></div></div></article>
+    </div>
+  </section>
+
+  <section class="sec" id="overlays">
+    <header><h2 class="g-h3">Sheet, modal, toast</h2><p>Native <code>&lt;dialog&gt;</code> with thick glass. Bottom sheet on phones, side sheet for detail, centre for confirmations.</p></header>
+    <div class="demo"><button class="g-btn" data-g-open="#s1">Bottom sheet</button><button class="g-btn" data-g-open="#s2">Side sheet</button><button class="g-btn" data-g-open="#s3">Modal</button><button class="g-btn" onclick="GlassKit.toast('Saved to your list', {icon:'check', tone:'good', sprite:'../icons.svg'})">Toast</button>
+      <div class="g-toast" style="animation:none">
+        <span class="g-tile g-tile--sm g-tile--good"><svg class="g-i"><use href="../icons.svg#check"/></svg></span>Static toast preview</div></div>
+  </section>
+
+  <section class="sec" id="states">
+    <header><h2 class="g-h3">Empty and loading</h2><p>Empty is one sentence and one action. Skeletons match the final layout.</p></header>
+    <div class="g-bento">
+      <article class="g-card g-span-6"><div class="g-empty"><div class="g-empty__icon"><svg class="g-i"><use href="../icons.svg#inbox"/></svg></div><b>No signals yet for this filter</b><p>Widen the date range or add a source.</p><button class="g-btn g-btn--sm">Clear filters</button></div></article>
+      <article class="g-card g-span-6 g-stack" aria-busy="true"><div class="g-row"><span class="g-skel g-skel--circle"></span><span class="g-skel g-skel--title"></span></div><span class="g-skel"></span><span class="g-skel" style="width:80%"></span><span class="g-skel g-skel--block"></span></article>
+    </div>
+  </section>
+
+  <section class="sec" id="voice">
+    <header><h2 class="g-h3">Voice orb</h2><p>States via <code>data-state</code>: idle, listening, thinking, speaking, error. Loudness via <code>--pilot-level</code> (0 to 1). The fixed orb bottom right is live: tap it.</p></header>
+    <div class="g-stack" style="--g-gap:24px">
+      <div class="orbs">
+        <figure><button class="g-orb-btn g-orb-btn--inline" data-state="idle" aria-label="Idle orb"><span class="g-orb"></span><svg class="g-i"><use href="../icons.svg#mic"/></svg></button>idle</figure>
+        <figure><button class="g-orb-btn g-orb-btn--inline" data-state="listening" aria-label="Listening orb" style="--pilot-level:.6"><span class="g-orb"></span></button>listening</figure>
+        <figure><button class="g-orb-btn g-orb-btn--inline" data-state="thinking" aria-label="Thinking orb"><span class="g-orb"></span></button>thinking</figure>
+        <figure><button class="g-orb-btn g-orb-btn--inline" data-state="speaking" aria-label="Speaking orb"><span class="g-orb"></span></button>speaking</figure>
+        <figure><button class="g-orb-btn g-orb-btn--inline" data-state="error" aria-label="Error orb"><span class="g-orb"></span></button>error</figure>
+        <figure><button class="g-orb-btn g-orb-btn--inline" style="--pilot-size:96px" aria-label="Large orb"><span class="g-orb"></span></button>96 px</figure>
+      </div>
+      <div class="g-row" style="align-items:flex-start; --g-gap:24px">
+        <div class="g-pilot-panel g-pilot-panel--inline" style="max-width:460px">
+          <div class="g-pilot-status"><span class="g-wave" aria-hidden="true" style="--pilot-level:.6"><i></i><i></i><i></i><i></i><i></i></span>Answering</div>
+          <p class="g-pilot-transcript">Which deadlines close this week?</p>
+          <div class="g-pilot-answer">Two: the Ondine Labs tender on Wed 21 Oct and the Brinewell voucher round on Sat 24 Oct.<div class="g-row g-mt-2" style="--g-gap:6px"><span class="g-source">tenders · #4471</span><span class="g-source">calls · v2-118</span></div></div>
+        </div>
+        <div class="phone" aria-label="Phone tab bar with separate orb">
+          <div class="g-h3">Phone tab bar</div><p class="g-small g-muted">Floating capsule, 4 tabs, the orb sits beside it like the iOS search button.</p>
+          <nav class="g-tabbar" aria-label="Demo tabs"><a href="#" aria-current="page"><svg class="g-i"><use href="../icons.svg#radar"/></svg>Home</a><a href="#"><svg class="g-i"><use href="../icons.svg#list"/></svg>List</a><a href="#"><svg class="g-i"><use href="../icons.svg#pin"/></svg>Map</a></nav>
+          <button class="g-orb-btn" aria-label="Orb"><span class="g-orb"></span><svg class="g-i"><use href="../icons.svg#mic"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <p class="g-small g-faint" style="padding:24px 0 40px">All names and numbers in this gallery are sample data. MIT · The Mishakin Group.</p>
+</main>
+
+<button class="g-orb-btn" id="orb" aria-label="Ask by voice" data-state="idle"><span class="g-orb"></span><svg class="g-i"><use href="../icons.svg#mic"/></svg></button>
+<div class="g-pilot-panel" id="pilot" hidden role="dialog" aria-label="Voice assistant">
+  <div class="g-pilot-status"><span class="g-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span data-pilot-status>Listening</span></div>
+  <p class="g-pilot-transcript">Which deadlines close <span class="is-partial">this week?</span></p>
+  <div class="g-pilot-answer">Two: Ondine Labs on Wed 21 Oct and Brinewell on Sat 24 Oct.<div class="g-row g-mt-2" style="--g-gap:6px"><span class="g-source">tenders · #4471</span><span class="g-source">calls · v2-118</span></div></div>
+</div>
+
+<dialog class="g-sheet" id="s1" aria-label="Bottom sheet"><div class="g-sheet__grab"></div><div class="g-sheet__body"><h2 class="g-h2">Bottom sheet</h2><p class="g-muted">Thick glass over a dimmed, slightly blurred page. Tap outside to close.</p><button class="g-btn g-btn--primary" data-g-close>Done</button></div></dialog>
+<dialog class="g-sheet g-sheet--side" id="s2" aria-label="Side sheet"><div class="g-sheet__body"><div class="g-row g-row--between"><h2 class="g-h2">Side sheet</h2><button class="g-btn g-btn--ghost g-btn--icon" data-g-close aria-label="Close"><svg class="g-i"><use href="../icons.svg#x"/></svg></button></div><p class="g-muted">For the record behind a number, without leaving the list.</p></div></dialog>
+<dialog class="g-sheet g-sheet--center" id="s3" aria-label="Modal"><div class="g-sheet__body"><h2 class="g-h2">Send the intro?</h2><p class="g-muted">The draft cites tender #4471.</p><div class="g-row" style="justify-content:flex-end"><button class="g-btn" data-g-close>Cancel</button><button class="g-btn g-btn--primary" data-g-close>Send</button></div></div></dialog>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  GlassKit.demoPilot(document.getElementById("orb"), document.getElementById("pilot"));
+  var chart;
+  function draw() {
+    if (!window.Chart) return;
+    var pal = GlassKit.chartDefaults(Chart);
+    if (chart) chart.destroy();
+    chart = new Chart(document.getElementById("cj"), { type: "line",
+      data: { labels: ["May", "Jun", "Jul", "Aug", "Sep", "Oct"], datasets: [
+        { label: "This year", data: [12, 15, 14, 19, 22, 31], borderColor: pal[0], backgroundColor: pal[0] + "22", fill: true },
+        { label: "Last year", data: [10, 11, 13, 12, 14, 16], borderColor: pal[4], borderDash: [4, 4] }] },
+      options: { maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, ticks: { maxTicksLimit: 4 } } } } });
+  }
+  draw(); document.addEventListener("g:theme", draw);
+  document.querySelectorAll("[data-g-accent]").forEach(function (b) { b.addEventListener("click", function () { setTimeout(draw, 30); }); });
+});
+</script>
+</body>
+</html>

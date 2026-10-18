@@ -1,0 +1,4 @@
+
+# third-party screenshots stay private
+library/shots/*
+!library/shots/ours_*

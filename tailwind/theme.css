@@ -1,0 +1,75 @@
+/* Tailwind v4 (CSS-first) theme carrying the glass.css tokens. MIT, The Mishakin Group.
+   In app/globals.css (Next.js) replace the default content with:
+
+     @import "tailwindcss";
+     @import "./glass.css";          (copy glass.css next to globals.css, or adjust the path)
+     @import "./glass-theme.css";    (this file)
+     @source "../app/**"; @source "../components/**";   (Tailwind 4 @source trap, see hack-design skill)
+
+   Then use bg-surface, text-ink-2, text-accent-text, rounded-lg, shadow-2, text-hero, glass, glass-thick ...
+   Opacity modifiers work in v4 (bg-accent/40) because Tailwind uses color-mix(). */
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+@theme inline {
+  --color-bg: var(--g-bg);
+  --color-surface: var(--g-surface);
+  --color-surface-2: var(--g-surface-2);
+  --color-sunken: var(--g-sunken);
+  --color-line: var(--g-line);
+  --color-line-2: var(--g-line-2);
+  --color-ink: var(--g-text);
+  --color-ink-2: var(--g-text-2);
+  --color-ink-3: var(--g-text-3);
+  --color-accent: var(--g-accent);
+  --color-accent-ink: var(--g-accent-ink);
+  --color-accent-text: var(--g-accent-text);
+  --color-accent-soft: var(--g-accent-soft);
+  --color-good: var(--g-good);   --color-good-text: var(--g-good-text);   --color-good-soft: var(--g-good-soft);
+  --color-warn: var(--g-warn);   --color-warn-text: var(--g-warn-text);   --color-warn-soft: var(--g-warn-soft);
+  --color-bad: var(--g-bad);     --color-bad-text: var(--g-bad-text);     --color-bad-soft: var(--g-bad-soft);
+  --color-chart-1: var(--g-chart-1); --color-chart-2: var(--g-chart-2); --color-chart-3: var(--g-chart-3);
+  --color-chart-4: var(--g-chart-4); --color-chart-5: var(--g-chart-5); --color-chart-6: var(--g-chart-6);
+
+  --font-sans: var(--g-font);
+  --font-mono: var(--g-font-mono);
+
+  --text-hero: var(--g-t-hero);       --text-hero--line-height: 0.98;    --text-hero--letter-spacing: -0.045em; --text-hero--font-weight: 600;
+  --text-display: var(--g-t-display); --text-display--line-height: 1.04; --text-display--letter-spacing: -0.04em; --text-display--font-weight: 600;
+  --text-h1: var(--g-t-h1);           --text-h1--line-height: 1.1;       --text-h1--letter-spacing: -0.03em;   --text-h1--font-weight: 600;
+  --text-h2: 22px;                    --text-h2--line-height: 1.25;      --text-h2--letter-spacing: -0.02em;   --text-h2--font-weight: 600;
+  --text-h3: 17px;                    --text-h3--line-height: 1.35;      --text-h3--letter-spacing: -0.012em;  --text-h3--font-weight: 600;
+  --text-lede: var(--g-t-lede);       --text-lede--line-height: 1.5;
+  --text-body: 15px;                  --text-body--line-height: 1.55;
+  --text-micro: 11.5px;               --text-micro--letter-spacing: 0.06em;
+  --text-num-hero: var(--g-t-num-hero); --text-num-hero--line-height: 0.9; --text-num-hero--letter-spacing: -0.055em; --text-num-hero--font-weight: 600;
+  --text-num: var(--g-t-num);         --text-num--line-height: 1;        --text-num--letter-spacing: -0.04em;  --text-num--font-weight: 600;
+
+  --radius-xs: 8px; --radius-sm: 12px; --radius-md: 16px; --radius-lg: 22px; --radius-xl: 28px; --radius-2xl: 36px; --radius-pill: 999px;
+  --shadow-1: var(--g-shadow-1); --shadow-2: var(--g-shadow-2); --shadow-3: var(--g-shadow-3); --shadow-glass: var(--g-glass-shadow);
+  --blur-thin: 12px; --blur-regular: 20px; --blur-thick: 24px;
+  --ease-spring: var(--g-ease-spring); --ease-glass: var(--g-ease);
+}
+
+/* glass surfaces as utilities. Literal blur values: Safari 18 drops var() inside backdrop-filter. */
+@utility glass {
+  background-color: var(--g-glass-regular); background-image: var(--g-glass-sheen);
+  -webkit-backdrop-filter: blur(20px) saturate(180%); backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--g-glass-border); box-shadow: var(--g-glass-shadow);
+  --g-text-2: var(--g-glass-text-2); --g-text-3: var(--g-glass-text-2); --g-accent-text: var(--g-glass-accent-text);
+}
+@utility glass-thin {
+  background-color: var(--g-glass-thin); background-image: var(--g-glass-sheen);
+  -webkit-backdrop-filter: blur(12px) saturate(180%); backdrop-filter: blur(12px) saturate(180%);
+  border: 1px solid var(--g-glass-border); box-shadow: var(--g-glass-shadow);
+  --g-text-2: var(--g-text); --g-text-3: var(--g-text); --g-accent-text: var(--g-text);
+}
+@utility glass-thick {
+  background-color: var(--g-glass-thick); background-image: var(--g-glass-sheen);
+  -webkit-backdrop-filter: blur(24px) saturate(190%); backdrop-filter: blur(24px) saturate(190%);
+  border: 1px solid var(--g-glass-border); box-shadow: var(--g-glass-shadow);
+  --g-text-2: var(--g-glass-text-2); --g-text-3: var(--g-glass-text-2); --g-accent-text: var(--g-glass-accent-text);
+}
+@media (prefers-reduced-transparency: reduce) {
+  .glass, .glass-thin, .glass-thick { background-color: var(--g-surface); background-image: none; backdrop-filter: none; -webkit-backdrop-filter: none; }
+}

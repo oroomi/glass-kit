@@ -9,8 +9,11 @@ Not covered (check by eye): background images and gradients (only the colour lay
 pseudo-elements (::before labels, arrows), placeholders, ancestor opacity, and anything inside
 [aria-hidden=true] or [data-contrast-skip].
 
-Usage: python3 tools/contrast_check.py URL [URL ...] [--themes light,dark] [--phone]
-Exit 1 if any text fails. Works on any page, not only the kit's templates (theme via ?theme=).
+Usage: python3 tools/contrast_check.py URL [URL ...] [--themes light,dark] [--phone] [--accents all|blue,teal,...]
+Exit 1 if any text fails. Works on any page, not only the kit's templates (theme via ?theme=, accent via ?accent=).
+By default only the template's own accent is checked. --accents all repeats every run once per advertised accent
+preset (blue is the default look; teal, green, orange, graphite are the data-accent presets in glass.css), because
+an accent changes the text colour AND the chip tint behind it, so one preset passing says nothing about the others.
 """
 import argparse
 import sys
@@ -81,32 +84,43 @@ JS = r"""
 """
 
 
+ACCENTS = ["blue", "teal", "green", "orange", "graphite"]   # the ?accent= values glass.js / glass.css support
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("urls", nargs="+")
     ap.add_argument("--themes", default="light,dark")
     ap.add_argument("--phone", action="store_true", help="390x844 instead of 1440x900")
     ap.add_argument("--all", action="store_true", help="print passing rows too")
+    ap.add_argument("--accents", default="", help="'all' or a comma list of ?accent= values to run each page under (default: the page's own accent)")
     a = ap.parse_args()
+    accents = ACCENTS if a.accents == "all" else [x for x in a.accents.split(",") if x]
+    for x in accents:
+        if x not in ACCENTS:
+            ap.error(f"unknown accent '{x}' (supported: {', '.join(ACCENTS)})")
     fails = 0
     with sync_playwright() as p:
         b = p.chromium.launch(args=["--no-sandbox"])
         vp = {"width": 390, "height": 844} if a.phone else {"width": 1440, "height": 900}
         for url in a.urls:
-            for theme in a.themes.split(","):
-                pg = b.new_page(viewport=vp)
-                sep = "&" if "?" in url else "?"
-                pg.goto(f"{url}{sep}theme={theme}", wait_until="networkidle")
-                pg.wait_for_timeout(1200)
-                rows = pg.evaluate(JS)
-                bad = [r for r in rows if not r["ok"]]
-                glass_rows = [r for r in rows if r["glass"]]
-                min_glass = min((r["ratio"] for r in glass_rows), default=None)
-                print(f"{url} [{theme}] {len(rows)} text nodes, {len(bad)} below AA; on glass: {len(glass_rows)} (min {min_glass})")
-                for r in (rows if a.all else bad):
-                    print(f"   {'ok ' if r['ok'] else 'FAIL'} {r['ratio']:>5} / {r['need']}  {'glass ' if r['glass'] else ''}{r['el']}  '{r['text']}'  fg {r['fg']} on {r['bg']}")
-                fails += len(bad)
-                pg.close()
+            for accent in (accents or [None]):
+                for theme in a.themes.split(","):
+                    pg = b.new_page(viewport=vp)
+                    sep = "&" if "?" in url else "?"
+                    q = f"theme={theme}" + (f"&accent={accent}" if accent else "")
+                    pg.goto(f"{url}{sep}{q}", wait_until="networkidle")
+                    pg.wait_for_timeout(1200)
+                    rows = pg.evaluate(JS)
+                    bad = [r for r in rows if not r["ok"]]
+                    glass_rows = [r for r in rows if r["glass"]]
+                    min_glass = min((r["ratio"] for r in glass_rows), default=None)
+                    tag = f"[{theme}{', ' + accent if accent else ''}]"
+                    print(f"{url} {tag} {len(rows)} text nodes, {len(bad)} below AA; on glass: {len(glass_rows)} (min {min_glass})")
+                    for r in (rows if a.all else bad):
+                        print(f"   {'ok ' if r['ok'] else 'FAIL'} {r['ratio']:>5} / {r['need']}  {'glass ' if r['glass'] else ''}{r['el']}  '{r['text']}'  fg {r['fg']} on {r['bg']}")
+                    fails += len(bad)
+                    pg.close()
         b.close()
     sys.exit(1 if fails else 0)
 

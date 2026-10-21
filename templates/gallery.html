@@ -21,6 +21,9 @@
   .swatches { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; position: relative; }
   .swatch { border-radius: 22px; padding: 16px; min-height: 150px; display: flex; flex-direction: column; justify-content: space-between; gap: 8px; }
   .swatch b { font-size: 15px; } .swatch small { font-size: 12.5px; color: var(--g-glass-text-2); }
+  /* thin glass carries large text only (>= 24px): a big label, with the small caption on a solid surface instead of on the glass */
+  .swatch--thin b { font-size: 30px; line-height: 1.05; letter-spacing: -0.03em; font-weight: 650; }
+  .swatch--thin small { align-self: flex-start; padding: 6px 10px; border-radius: 10px; background: var(--g-surface); color: var(--g-base-text-2); border: 1px solid var(--g-line); }
   .phone { position: relative; width: 300px; height: 300px; border-radius: 36px; overflow: hidden; border: 1px solid var(--g-line); background: var(--g-bg); padding: 16px; }
   .phone .g-tabbar { position: absolute; display: flex; left: 10px; right: 76px; bottom: 12px; height: 58px; }
   .phone .g-orb-btn { position: absolute; right: 12px; bottom: 12px; --pilot-size: 58px; }
@@ -65,7 +68,7 @@
     <div class="backdrop">
       <div class="lines" aria-hidden="true">Signals 31 · act now 6 · tenders · registry · funding calls · Signals 31 · act now 6 · tenders · registry · funding calls · Signals 31 · act now 6 · tenders · registry · funding calls · Signals 31 · act now 6</div>
       <div class="swatches">
-        <div class="swatch g-glass g-glass--thin"><b>Thin</b><small>.g-glass--thin<br>blur 12 · large text only</small></div>
+        <div class="swatch swatch--thin g-glass g-glass--thin"><b>Thin</b><small>.g-glass--thin<br>blur 12 · large text only</small></div>
         <div class="swatch g-glass"><b>Regular</b><small>.g-glass<br>blur 20 · nav, tab bar, ask bar</small></div>
         <div class="swatch g-glass g-glass--thick g-refract"><b>Thick + refract</b><small>.g-glass--thick .g-refract<br>sheets, overlays, tooltips</small></div>
         <div class="swatch g-glass g-glass--clear" role="img" aria-label="Clear glass: decorative only, no text" style="align-items:center; justify-content:center"><svg class="g-i" style="width:40px;height:40px;color:#fff"><use href="../icons.svg#sparkles"/></svg></div>

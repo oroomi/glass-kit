@@ -25,7 +25,7 @@ Before and after: see `docs/BEFORE_AFTER.md`. The side-by-side comparison images
 | `tailwind/preset.js` | Tailwind v3 preset with the same tokens. Compile-tested on 3.4.17. |
 | `shadcn/globals-glass.css` | shadcn/ui variables mapped to the tokens, plus where glass goes in shadcn components. |
 | `library/` | `README.md` (per-site notes), `PATTERNS.md` (15 recurring moves), `LIQUID_GLASS.md` (Apple's rules, web recipe, browser support, sources), `shots/` (1440x900 and 390x844 captures + `facts.json`). |
-| `tools/` | `shoot_templates.py` (screens at 1440/390, light/dark), `contrast_check.py` (WCAG AA incl. text on glass, any URL), `capture_library.py` (re-capture references), `vendor_fonts.py` (self-host the fonts). |
+| `tools/` | `shoot_templates.py` (screens at 1440/390, light/dark; `--click` for overlay states: when the click opens a `<dialog>` it uses Playwright `animations="allow"` because `"disabled"` never returned with a dialog open, override with `--animations`), `contrast_check.py` (WCAG AA incl. text on glass, any URL; `--phone` for 390 px, `--accents all` to repeat every run under each accent preset), `capture_library.py` (re-capture references), `vendor_fonts.py` (self-host the fonts). |
 
 ## Use it in 10 minutes: plain HTML, Jinja, FastAPI
 ```bash
@@ -96,7 +96,10 @@ the toggles and refraction, or port the few lines you need. Tailwind v3 projects
   `.g-pilot-answer` with `.g-source` chips.
 
 ## Accessibility and honest limits
-- WCAG AA: `tools/contrast_check.py` reports 0 failures on all four templates in light and dark at 1440 and 390 px.
+- WCAG AA: `tools/contrast_check.py` reports 0 failures on all four templates in light and dark at 1440 and 390 px
+  under every advertised accent (`--accents all`: blue, teal, green, orange, graphite; 40 runs per viewport). Without
+  that flag only the page's own accent is checked, and an accent changes the chip tint behind its text as well as the
+  text, so re-run with `--accents all` after touching an accent token (green and orange needed a darker light-theme text tone).
   Text on glass is tested against both a black and a white backdrop (worst case), which is why glass fills are fairly
   opaque (light 0.52/0.74/0.86, dark 0.66/0.82/0.90) and why greys and accent text switch to darker on-glass tokens
   inside glass. The checker does not see background images or gradients, pseudo-element text (stacked-table labels,

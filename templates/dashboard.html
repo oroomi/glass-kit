@@ -15,7 +15,10 @@
   .stage-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
   .stage .g-chart { margin-top: auto; }
   .stage { min-height: 392px; }
-  .tip { position: absolute; right: 8%; top: 0; z-index: 3; }
+  /* The tooltip lives in the empty corner of the header row (right of the KPI, under the legend), not over the plot:
+     the bars of weeks 38 to 42 reach the top of the plot, so anything floating inside it hides data. */
+  .stage-top { position: relative; }
+  .tip { position: absolute; right: 0; bottom: 0; z-index: 3; }
   .tip b { font-size: 15px; letter-spacing: -0.02em; }
   @media (max-width: 860px) { .head { flex-direction: column; align-items: flex-start; } }
   @media (max-width: 640px) { .stage { min-height: 0; } .stage-in { padding: 18px 16px 16px; } .tip { display: none; } }
@@ -70,12 +73,12 @@
               <div class="g-legend g-hide-phone" style="padding-top:6px">
                 <span style="--_c: var(--g-chart-1)">Act now</span><span style="--_c: color-mix(in oklab, var(--g-chart-5) 55%, transparent)">All signals</span>
               </div>
+              <div class="g-float g-glass--thick tip g-refract" role="note">
+                <div class="g-eyebrow" style="color:var(--g-glass-text-2)">Week 42</div>
+                <div><b class="g-num">31</b> <span class="g-small" style="color:var(--g-glass-text-2)">signals</span> · <b class="g-num g-accent-text">6</b> <span class="g-small" style="color:var(--g-glass-text-2)">act now</span></div>
+              </div>
             </div>
             <div class="g-chart" style="--odd:hidden">
-<div class="g-float g-glass--thick tip g-refract" role="note">
-            <div class="g-eyebrow" style="color:var(--g-glass-text-2)">Week 42</div>
-            <div><b class="g-num">31</b> <span class="g-small" style="color:var(--g-glass-text-2)">signals</span> · <b class="g-num g-accent-text">6</b> <span class="g-small" style="color:var(--g-glass-text-2)">act now</span></div>
-          </div>
 <svg viewBox="0 0 640 330" role="img" aria-label="Weekly signals, weeks 31 to 42: total rising from 14 to 31, act-now from 2 to 6"><g class="grid"><line x1="8" x2="632" y1="326.0" y2="326.0"/><line x1="8" x2="632" y1="230.2" y2="230.2"/><line x1="8" x2="632" y1="134.5" y2="134.5"/><line x1="8" x2="632" y1="38.7" y2="38.7"/></g><g><rect class="muted" x="19.4" y="191.9" width="29.1" height="134.1" rx="7"/><rect class="s1 bar lo" x="19.4" y="306.8" width="29.1" height="19.2" rx="7"/><rect class="muted" x="71.4" y="153.6" width="29.1" height="172.4" rx="7"/><rect class="s1 bar lo" x="71.4" y="297.3" width="29.1" height="28.7" rx="7"/><rect class="muted" x="123.4" y="172.8" width="29.1" height="153.2" rx="7"/><rect class="s1 bar lo" x="123.4" y="306.8" width="29.1" height="19.2" rx="7"/><rect class="muted" x="175.4" y="124.9" width="29.1" height="201.1" rx="7"/><rect class="s1 bar lo" x="175.4" y="287.7" width="29.1" height="38.3" rx="7"/><rect class="muted" x="227.4" y="144.1" width="29.1" height="181.9" rx="7"/><rect class="s1 bar lo" x="227.4" y="297.3" width="29.1" height="28.7" rx="7"/><rect class="muted" x="279.4" y="96.2" width="29.1" height="229.8" rx="7"/><rect class="s1 bar lo" x="279.4" y="287.7" width="29.1" height="38.3" rx="7"/><rect class="muted" x="331.4" y="115.3" width="29.1" height="210.7" rx="7"/><rect class="s1 bar lo" x="331.4" y="297.3" width="29.1" height="28.7" rx="7"/><rect class="muted" x="383.4" y="67.5" width="29.1" height="258.5" rx="7"/><rect class="s1 bar lo" x="383.4" y="278.1" width="29.1" height="47.9" rx="7"/><rect class="muted" x="435.4" y="86.6" width="29.1" height="239.4" rx="7"/><rect class="s1 bar lo" x="435.4" y="287.7" width="29.1" height="38.3" rx="7"/><rect class="muted" x="487.4" y="48.3" width="29.1" height="277.7" rx="7"/><rect class="s1 bar lo" x="487.4" y="278.1" width="29.1" height="47.9" rx="7"/><rect class="muted" x="539.4" y="77.0" width="29.1" height="249.0" rx="7"/><rect class="s1 bar lo" x="539.4" y="287.7" width="29.1" height="38.3" rx="7"/><rect class="muted hi" x="591.4" y="29.2" width="29.1" height="296.8" rx="7"/><rect class="s1 bar hi" x="591.4" y="268.5" width="29.1" height="57.5" rx="7"/></g></svg><div class="g-chart__x" aria-hidden="true"><span>W31</span><span>W32</span><span>W33</span><span>W34</span><span>W35</span><span>W36</span><span>W37</span><span>W38</span><span>W39</span><span>W40</span><span>W41</span><span>W42</span></div></div>
           </div>
           </article>

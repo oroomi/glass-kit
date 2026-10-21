@@ -179,10 +179,13 @@
   }
 }
 
-/* 3 ─ accent presets: <html data-accent="teal">. One accent per product. ─── */
+/* 3 ─ accent presets: <html data-accent="teal">. One accent per product. ───
+   Light theme: --g-accent is the fill (buttons, white ink on it); --g-accent-text is the TEXT tone and is darker than the fill for
+   green and orange, because accent text sits on its own 11% tint (.g-chip--accent) and the fill tones only reach 4.33 / 4.42 there.
+   tools/contrast_check.py --accents all checks every preset on every template. */
 [data-accent="teal"]     { --g-accent: #0F766E; --g-accent-text: #0F766E; }
-[data-accent="green"]    { --g-accent: #15803D; --g-accent-text: #15803D; }
-[data-accent="orange"]   { --g-accent: #C2410C; --g-accent-text: #C2410C; }
+[data-accent="green"]    { --g-accent: #15803D; --g-accent-text: #14753A; }
+[data-accent="orange"]   { --g-accent: #C2410C; --g-accent-text: #B03A0B; }
 [data-accent="graphite"] { --g-accent: #1F2937; --g-accent-text: #1F2937; }
 [data-theme="dark"][data-accent="teal"]     { --g-accent: #0F766E; --g-accent-text: #2DD4BF; }
 [data-theme="dark"][data-accent="green"]    { --g-accent: #15803D; --g-accent-text: #4ADE80; }

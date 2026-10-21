@@ -84,8 +84,9 @@
   /* demo-only state machine so galleries show every orb state without a microphone */
   function demoPilot(orb, panel) {
     if (!orb) return;
-    var raf = 0, t0 = 0;
+    var raf = 0, t0 = 0, timers = [];
     var status = panel && panel.querySelector("[data-pilot-status]");
+    function clearTimers() { timers.forEach(clearTimeout); timers = []; }   /* a closed panel must not keep advancing the orb */
     function state(s) {
       orb.setAttribute("data-state", s);
       if (panel) panel.setAttribute("data-state", s);
@@ -94,12 +95,13 @@
     function wobble(ts) { if (!t0) t0 = ts; var k = (ts - t0) / 1000; setPilotLevel(0.35 + 0.3 * Math.sin(k * 7) * Math.sin(k * 2.3) + 0.2 * Math.random()); raf = requestAnimationFrame(wobble); }
     orb.addEventListener("click", function () {
       var open = panel && !panel.hidden;
-      if (open) { panel.hidden = true; cancelAnimationFrame(raf); setPilotLevel(0); state("idle"); return; }
+      clearTimers(); cancelAnimationFrame(raf);
+      if (open) { panel.hidden = true; setPilotLevel(0); state("idle"); return; }
       if (panel) panel.hidden = false;
       state("listening"); t0 = 0; raf = requestAnimationFrame(wobble);
-      setTimeout(function () { state("thinking"); }, 2400);
-      setTimeout(function () { state("speaking"); }, 3600);
-      setTimeout(function () { cancelAnimationFrame(raf); setPilotLevel(0); state("idle"); }, 7600);
+      timers.push(setTimeout(function () { state("thinking"); }, 2400));
+      timers.push(setTimeout(function () { state("speaking"); }, 3600));
+      timers.push(setTimeout(function () { cancelAnimationFrame(raf); setPilotLevel(0); state("idle"); }, 7600));
     });
   }
 
